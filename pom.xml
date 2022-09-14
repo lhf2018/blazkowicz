@@ -23,6 +23,10 @@
         <module>blazkowicz-application</module>
         <module>blazkowicz-configuration</module>
         <module>blazkowicz-running</module>
+        <module>blazkowicz-running/running-domain</module>
+        <module>blazkowicz-running/running-infrastructure</module>
+        <module>blazkowicz-configuration/configuration-domain</module>
+        <module>blazkowicz-configuration/configuration-infrastructure</module>
     </modules>
 
     <properties>
