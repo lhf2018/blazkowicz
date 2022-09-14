@@ -10,7 +10,7 @@
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
-  <artifactId>blazkowicz-domain</artifactId>
+  <artifactId>blazkowicz-infrastructure-share</artifactId>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -25,7 +25,7 @@
     </dependency>
     <dependency>
       <groupId>com.bupt</groupId>
-      <artifactId>blazkowicz-common</artifactId>
+      <artifactId>blazkowicz-domain-share</artifactId>
     </dependency>
   </dependencies>
 

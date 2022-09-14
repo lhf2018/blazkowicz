@@ -15,12 +15,14 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>blazkowicz-start</module>
-        <module>blazkowicz-infrastructure</module>
-        <module>blazkowicz-domain</module>
+        <module>blazkowicz-infrastructure-share</module>
+        <module>blazkowicz-domain-share</module>
         <module>blazkowicz-controller</module>
         <module>blazkowicz-common</module>
         <module>blazkowicz-client</module>
         <module>blazkowicz-application</module>
+        <module>blazkowicz-configuration</module>
+        <module>blazkowicz-running</module>
     </modules>
 
     <properties>
@@ -40,12 +42,7 @@
             <artifactId>spring-boot-devtools</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.2</version>
-            <scope>test</scope>
-        </dependency>
+
     </dependencies>
     <dependencyManagement>
         <dependencies>
@@ -71,18 +68,44 @@
             </dependency>
             <dependency>
                 <groupId>com.bupt</groupId>
-                <artifactId>blazkowicz-domain</artifactId>
+                <artifactId>blazkowicz-domain-share</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.bupt</groupId>
-                <artifactId>blazkowicz-infrastructure</artifactId>
+                <artifactId>blazkowicz-infrastructure-share</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.bupt</groupId>
-                <artifactId>blazkowicz-infrastructure</artifactId>
+                <artifactId>blazkowicz-infrastructure-share</artifactId>
                 <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.bupt</groupId>
+                <artifactId>running-domain</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.bupt</groupId>
+                <artifactId>running-infrastructure</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.bupt</groupId>
+                <artifactId>configuration-domain</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.bupt</groupId>
+                <artifactId>configuration-infrastructure</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.13.2</version>
+                <scope>test</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>

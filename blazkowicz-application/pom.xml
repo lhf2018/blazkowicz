@@ -29,7 +29,7 @@
     </dependency>
     <dependency>
       <groupId>com.bupt</groupId>
-      <artifactId>blazkowicz-infrastructure</artifactId>
+      <artifactId>blazkowicz-infrastructure-share</artifactId>
     </dependency>
   </dependencies>
 
