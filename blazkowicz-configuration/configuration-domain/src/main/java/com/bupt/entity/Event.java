@@ -14,7 +14,12 @@ public class Event {
     private Date gmtCreate;
     private Date gmtModified;
     private Integer version;
-    /**基本信息*/
+    /**
+     * 基本信息
+     */
     private EventInfo eventInfo;
+    /**
+     * 特征
+     */
     private Feature feature;
 }
