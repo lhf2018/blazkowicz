@@ -1,4 +1,4 @@
-package com.bupt.entity;
+package com.bupt.configuration.domain.entity;
 
 import lombok.Getter;
 
