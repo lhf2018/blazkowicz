@@ -8,5 +8,9 @@ import lombok.Getter;
  */
 @Getter
 public abstract class Feature {
-    private FeatureType type;
+    private final FeatureType type;
+
+    protected Feature(FeatureType type) {
+        this.type = type;
+    }
 }

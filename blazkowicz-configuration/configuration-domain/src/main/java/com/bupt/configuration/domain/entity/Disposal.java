@@ -8,5 +8,9 @@ import lombok.Getter;
  */
 @Getter
 public abstract class Disposal {
-    private DisposalType type;
+    private final DisposalType type;
+
+    protected Disposal(DisposalType type) {
+        this.type = type;
+    }
 }
