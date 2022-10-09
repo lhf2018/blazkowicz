@@ -19,14 +19,16 @@
         <module>blazkowicz-domain-share</module>
         <module>blazkowicz-controller</module>
         <module>blazkowicz-common</module>
-        <module>blazkowicz-client</module>
-        <module>blazkowicz-application</module>
         <module>blazkowicz-configuration</module>
         <module>blazkowicz-running</module>
         <module>blazkowicz-running/running-domain</module>
         <module>blazkowicz-running/running-infrastructure</module>
         <module>blazkowicz-configuration/configuration-domain</module>
         <module>blazkowicz-configuration/configuration-infrastructure</module>
+        <module>blazkowicz-running/running-client</module>
+        <module>blazkowicz-running/running-application</module>
+        <module>blazkowicz-configuration/configuration-client</module>
+        <module>blazkowicz-configuration/configuration-application</module>
     </modules>
 
     <properties>
@@ -53,11 +55,6 @@
             <dependency>
                 <groupId>com.bupt</groupId>
                 <artifactId>blazkowicz-application</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.bupt</groupId>
-                <artifactId>blazkowicz-client</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -103,6 +100,21 @@
             <dependency>
                 <groupId>com.bupt</groupId>
                 <artifactId>configuration-infrastructure</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.bupt</groupId>
+                <artifactId>running-client</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.bupt</groupId>
+                <artifactId>running-application</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.bupt</groupId>
+                <artifactId>configuration-client</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

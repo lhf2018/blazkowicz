@@ -1,4 +1,4 @@
-package com.bupt.application.api;
+package api;
 
 /**
  * @author lhf2018
