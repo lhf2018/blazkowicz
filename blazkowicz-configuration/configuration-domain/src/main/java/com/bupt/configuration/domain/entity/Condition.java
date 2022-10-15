@@ -1,5 +1,9 @@
 package com.bupt.configuration.domain.entity;
 
+import com.bupt.configuration.domain.translator.ToRuleTranslator;
+import com.bupt.domain.share.bridge.DomainShareBridge;
+import com.bupt.domain.share.inf.RuleEngineInfService;
+
 import lombok.Getter;
 
 /**
@@ -10,6 +14,28 @@ import lombok.Getter;
  */
 @Getter
 public class Condition {
-    //todo groovy脚本的名字
 
+    /** 脚本内容 */
+    private String script;
+
+    /** 脚本名称 */
+    private String name;
+
+    /** id */
+    private final Long scriptId;
+
+    public Condition(String script, String name, Long scriptId) {
+        this.script = script;
+        this.name = name;
+        this.scriptId = scriptId;
+    }
+
+    public void updateName(String newName) {
+        name = newName;
+    }
+
+    public void updateScript(String newScript) {
+        script = newScript;
+        DomainShareBridge.getAdapter(RuleEngineInfService.class).createRule(ToRuleTranslator.toRule(this));
+    }
 }

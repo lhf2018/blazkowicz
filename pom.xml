@@ -54,11 +54,6 @@
         <dependencies>
             <dependency>
                 <groupId>com.bupt</groupId>
-                <artifactId>blazkowicz-application</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.bupt</groupId>
                 <artifactId>blazkowicz-common</artifactId>
                 <version>${project.version}</version>
             </dependency>
