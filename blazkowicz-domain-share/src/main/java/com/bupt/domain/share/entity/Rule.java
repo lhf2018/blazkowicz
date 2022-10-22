@@ -11,7 +11,6 @@ public class Rule {
     private final Long ruleId;
     /** 脚本内容 */
     private String script;
-
     /** 脚本名称 */
     private String name;
 

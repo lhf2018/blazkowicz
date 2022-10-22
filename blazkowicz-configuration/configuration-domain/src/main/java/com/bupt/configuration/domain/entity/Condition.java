@@ -1,8 +1,8 @@
 package com.bupt.configuration.domain.entity;
 
+import com.bupt.configuration.domain.inf.RuleManagerInfService;
 import com.bupt.configuration.domain.translator.ToRuleTranslator;
 import com.bupt.domain.share.bridge.DomainShareBridge;
-import com.bupt.domain.share.inf.RuleEngineInfService;
 
 import lombok.Getter;
 
@@ -36,6 +36,6 @@ public class Condition {
 
     public void updateScript(String newScript) {
         script = newScript;
-        DomainShareBridge.getAdapter(RuleEngineInfService.class).createRule(ToRuleTranslator.toRule(this));
+        DomainShareBridge.getAdapter(RuleManagerInfService.class).createRule(ToRuleTranslator.toRule(this));
     }
 }
