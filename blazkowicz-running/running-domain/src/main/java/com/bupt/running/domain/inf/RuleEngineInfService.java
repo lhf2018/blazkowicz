@@ -25,7 +25,8 @@ public interface RuleEngineInfService {
      * 
      * @param script
      * @param method
+     * @param args
      * @return
      */
-    Status runRule(String script, String method, String args);
+    Status runRule(String script, String method, Object[] args);
 }

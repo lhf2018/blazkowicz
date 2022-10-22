@@ -25,8 +25,12 @@ public class RuleEngineInfServiceImpl implements RuleEngineInfService {
     }
 
     @Override
-    public Status runRule(String script, String method, String args) {
-        // todo
-        return null;
+    public Status runRule(String script, String method, Object[] args) {
+        try {
+            Boolean result = (Boolean)groovyInfService.run(script, method, args);
+            return result.equals(Boolean.TRUE) ? Status.NOT_MEET : Status.MEET;
+        } catch (Throwable e) {
+            return Status.ERROR;
+        }
     }
 }

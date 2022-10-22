@@ -19,10 +19,11 @@ public class GroovyInfService {
     public static Map<String, GroovyObject> passedClassMap = new HashMap<>();
 
     private static GroovyClassLoader groovyClassLoader = null;
+    private static final String SOURCE_ENCODING = "UTF-8";
 
     static {
         CompilerConfiguration config = new CompilerConfiguration();
-        config.setSourceEncoding("UTF-8");
+        config.setSourceEncoding(SOURCE_ENCODING);
         // 设置该GroovyClassLoader的父ClassLoader为当前线程的加载器(默认)
         groovyClassLoader = new GroovyClassLoader(Thread.currentThread().getContextClassLoader(), config);
     }
