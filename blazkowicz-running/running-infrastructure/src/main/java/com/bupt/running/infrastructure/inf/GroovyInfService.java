@@ -19,6 +19,7 @@ public class GroovyInfService {
     public static Map<String, GroovyObject> passedClassMap = new HashMap<>();
 
     private static GroovyClassLoader groovyClassLoader = null;
+
     private static final String SOURCE_ENCODING = "UTF-8";
 
     static {
