@@ -22,6 +22,10 @@
             <groupId>com.bupt</groupId>
             <artifactId>running-client</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.bupt</groupId>
+            <artifactId>running-infrastructure</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

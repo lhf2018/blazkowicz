@@ -9,6 +9,6 @@ import com.bupt.domain.share.entity.Rule;
  */
 public class ToRuleTranslator {
     public static Rule toRule(Condition condition) {
-        return new Rule(condition.getScriptId(), condition.getScript(), condition.getName());
+        return new Rule(condition.getScript(), condition.getName());
     }
 }

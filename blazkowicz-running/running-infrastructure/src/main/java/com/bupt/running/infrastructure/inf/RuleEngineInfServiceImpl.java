@@ -17,6 +17,7 @@ import com.bupt.running.domain.inf.RuleEngineInfService;
 public class RuleEngineInfServiceImpl implements RuleEngineInfService {
     @Autowired
     private GroovyInfService groovyInfService;
+    private static final String DEFAULT_METHOD = "run";
 
     @Override
     public List<Rule> getRuleList(String businessIdentity, String preventionType, String name) {
@@ -25,9 +26,9 @@ public class RuleEngineInfServiceImpl implements RuleEngineInfService {
     }
 
     @Override
-    public Status runRule(String script, String method, Object[] args) {
+    public Status runRule(Rule rule, Object[] args) {
         try {
-            Boolean result = (Boolean)groovyInfService.run(script, method, args);
+            Boolean result = (Boolean)groovyInfService.run(rule.getScript(), DEFAULT_METHOD, args);
             return result.equals(Boolean.TRUE) ? Status.NOT_MEET : Status.MEET;
         } catch (Throwable e) {
             return Status.ERROR;

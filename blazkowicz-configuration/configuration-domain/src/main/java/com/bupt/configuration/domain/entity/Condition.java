@@ -21,13 +21,9 @@ public class Condition {
     /** 脚本名称 */
     private String name;
 
-    /** id */
-    private final Long scriptId;
-
     public Condition(String script, String name, Long scriptId) {
         this.script = script;
         this.name = name;
-        this.scriptId = scriptId;
     }
 
     public void updateName(String newName) {
