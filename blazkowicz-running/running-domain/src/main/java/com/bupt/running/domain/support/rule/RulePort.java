@@ -1,5 +1,7 @@
 package com.bupt.running.domain.support.rule;
 
+import java.util.List;
+
 import com.bupt.domain.share.entity.Rule;
 
 /**
@@ -9,14 +11,13 @@ import com.bupt.domain.share.entity.Rule;
 public interface RulePort {
 
     /**
-     * 获取完整运行的规则，包括脚本和参数
-     *
+     * 获取某防控类型完整风控规则
+     * 
      * @param businessIdentity
      * @param preventionType
-     * @param ruleName
      * @return
      */
-    RunningFullRuleResp getRunningFullRuleResp(String businessIdentity, String preventionType, String ruleName);
+    List<RuleResp> getRunningFullRuleRespList(String businessIdentity, String preventionType);
 
     /**
      * 运行规则
@@ -25,5 +26,5 @@ public interface RulePort {
      * @param params
      * @return
      */
-    IdentityResp runRule(Rule rule, Object[] params);
+    IdentityResultResp runRule(Rule rule, Object[] params);
 }

@@ -1,17 +1,20 @@
 package com.bupt.running.infrastructure.support.rule;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.bupt.domain.share.entity.Rule;
 import com.bupt.domain.share.entity.Status;
 import com.bupt.running.domain.inf.RuleEngineInfService;
-import com.bupt.running.domain.support.rule.IdentityResp;
+import com.bupt.running.domain.support.rule.IdentityResultResp;
 import com.bupt.running.domain.support.rule.RulePort;
-import com.bupt.running.domain.support.rule.RunningFullRuleResp;
+import com.bupt.running.domain.support.rule.RuleResp;
 import com.bupt.running.infrastructure.query.RuleQueryService;
 import com.bupt.running.infrastructure.resp.RuleParamResp;
 import com.bupt.running.infrastructure.resp.RuleScriptResp;
+import com.google.common.collect.Lists;
 
 /**
  * @author lhf2018
@@ -25,24 +28,29 @@ public class RuleAdapter implements RulePort {
     private RuleEngineInfService ruleEngineInfService;
 
     @Override
-    public RunningFullRuleResp getRunningFullRuleResp(String businessIdentity, String preventionType, String ruleName) {
-        RunningFullRuleResp runningFullRuleResp = new RunningFullRuleResp();
-        runningFullRuleResp.setName(ruleName);
+    public List<RuleResp> getRunningFullRuleRespList(String businessIdentity, String preventionType) {
+        List<String> res = ruleQueryService.getRuleList(businessIdentity, preventionType);
 
-        RuleParamResp ruleParamResp = ruleQueryService.getRuleParamResp(businessIdentity, preventionType, ruleName);
-        runningFullRuleResp.setParams(ruleParamResp.getParams());
-        RuleScriptResp ruleScriptResp = ruleQueryService.getRuleScript(businessIdentity, preventionType, ruleName);
-        runningFullRuleResp.setScript(ruleScriptResp.getScript());
-        return runningFullRuleResp;
+        List<RuleResp> ruleRespList = Lists.newArrayList();
+        res.forEach(ruleName -> {
+            RuleResp ruleResp = new RuleResp();
+            RuleParamResp ruleParamResp = ruleQueryService.getRuleParamResp(businessIdentity, preventionType, ruleName);
+            RuleScriptResp ruleScriptResp = ruleQueryService.getRuleScriptResp(businessIdentity, preventionType, ruleName);
+            ruleResp.setScript(ruleScriptResp.getScript());
+            ruleResp.setParams(ruleParamResp.getParams());
+            ruleResp.setName(ruleName);
+            ruleRespList.add(ruleResp);
+        });
+        return ruleRespList;
     }
 
     @Override
-    public IdentityResp runRule(Rule rule, Object[] params) {
-        IdentityResp identityResp = new IdentityResp();
-        identityResp.setRuleName(rule.getName());
+    public IdentityResultResp runRule(Rule rule, Object[] params) {
+        IdentityResultResp identityResultResp = new IdentityResultResp();
+        identityResultResp.setRuleName(rule.getName());
 
         Status status = ruleEngineInfService.runRule(rule, params);
-        identityResp.setStatus(status);
-        return identityResp;
+        identityResultResp.setStatus(status);
+        return identityResultResp;
     }
 }

@@ -7,7 +7,7 @@ import lombok.Data;
  * @date 2022/10/29 16:35
  */
 @Data
-public class RunningFullRuleResp {
+public class RuleResp {
     private String name;
     private String script;
     private Object[] params;

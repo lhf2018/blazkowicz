@@ -9,7 +9,7 @@ import lombok.Data;
  * @date 2022/10/29 16:38
  */
 @Data
-public class IdentityResp {
+public class IdentityResultResp {
     private Status status;
     private String ruleName;
 }
