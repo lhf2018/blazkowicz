@@ -10,7 +10,7 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>blazkowicz-controller</artifactId>
+    <artifactId>blazkowicz-controller-share</artifactId>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -22,14 +22,6 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.bupt</groupId>
-            <artifactId>running-application</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.bupt</groupId>
-            <artifactId>configuration-application</artifactId>
         </dependency>
     </dependencies>
 </project>

@@ -1,5 +1,5 @@
 class Main {
-    static boolean main() {
-        return true;
+    static boolean run(String param) {
+        return param == "test"
     }
 }

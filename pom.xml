@@ -17,7 +17,7 @@
         <module>blazkowicz-start</module>
         <module>blazkowicz-infrastructure-share</module>
         <module>blazkowicz-domain-share</module>
-        <module>blazkowicz-controller</module>
+        <module>blazkowicz-controller-share</module>
         <module>blazkowicz-common</module>
         <module>blazkowicz-configuration</module>
         <module>blazkowicz-running</module>
@@ -29,6 +29,7 @@
         <module>blazkowicz-running/running-application</module>
         <module>blazkowicz-configuration/configuration-client</module>
         <module>blazkowicz-configuration/configuration-application</module>
+        <module>blazkowicz-running/running-controller</module>
     </modules>
 
     <properties>
@@ -63,7 +64,12 @@
             </dependency>
             <dependency>
                 <groupId>com.bupt</groupId>
-                <artifactId>blazkowicz-controller</artifactId>
+                <artifactId>blazkowicz-controller-share</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.bupt</groupId>
+                <artifactId>running-controller</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -150,6 +156,13 @@
                 <artifactId>commons-lang3</artifactId>
                 <version>3.12.0</version>
             </dependency>
+            <!-- external lib start -->
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+                <version>1.9.6</version>
+            </dependency>
+            <!-- external lib end -->
         </dependencies>
     </dependencyManagement>
     <build>
