@@ -1,4 +1,4 @@
-package com.bupt.running.infrastructure.query;
+package com.bupt.infrastructure.share.query;
 
 import java.util.List;
 
@@ -6,11 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.bupt.domain.share.inf.NosqlInfService;
-import com.bupt.running.infrastructure.resp.RuleParamResp;
-import com.bupt.running.infrastructure.resp.RuleScriptResp;
+import com.bupt.infrastructure.share.resp.RuleParamResp;
+import com.bupt.infrastructure.share.resp.RuleScriptResp;
 import com.google.common.collect.Lists;
 
 /**
+ * 规则查询
+ * 
  * @author lhf2018
  * @date 2022/10/29 15:29
  */

@@ -2,8 +2,9 @@ package com.bupt.running.domain.inf;
 
 import java.util.List;
 
-import com.bupt.domain.share.entity.Rule;
 import com.bupt.domain.share.entity.Status;
+import com.bupt.running.domain.support.rule.RuleReq;
+import com.bupt.running.domain.support.rule.RuleResp;
 
 /**
  * @author lhf2018
@@ -15,17 +16,15 @@ public interface RuleEngineInfService {
      *
      * @param businessIdentity
      * @param preventionType
-     * @param name
      * @return
      */
-    List<Rule> getRuleList(String businessIdentity, String preventionType, String name);
+    List<RuleResp> getRuleRespList(String businessIdentity, String preventionType);
 
     /**
      * 运行规则
      * 
-     * @param rule
-     * @param args
+     * @param ruleReq
      * @return
      */
-    Status runRule(Rule rule, Object[] args);
+    Status runRule(RuleReq ruleReq);
 }

@@ -1,5 +1,6 @@
 package com.bupt.running.domain.support.rule;
 
+import lombok.Builder;
 import lombok.Data;
 
 /**
@@ -7,8 +8,9 @@ import lombok.Data;
  * @date 2022/10/29 16:35
  */
 @Data
+@Builder
 public class RuleResp {
-    private String name;
+    private String id;
     private String script;
     private Object[] params;
 }

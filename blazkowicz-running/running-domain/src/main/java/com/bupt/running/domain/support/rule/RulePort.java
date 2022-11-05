@@ -2,8 +2,6 @@ package com.bupt.running.domain.support.rule;
 
 import java.util.List;
 
-import com.bupt.domain.share.entity.Rule;
-
 /**
  * @author lhf2018
  * @date 2022/10/29 16:35
@@ -17,14 +15,14 @@ public interface RulePort {
      * @param preventionType
      * @return
      */
-    List<RuleResp> getRunningFullRuleRespList(String businessIdentity, String preventionType);
+    List<RuleResp> getRuleRespList(String businessIdentity, String preventionType);
 
     /**
-     * 运行规则
+     * 运行某一业务身份对应的防控点的所有策略
      * 
-     * @param rule
-     * @param params
+     * @param businessIdentity
+     * @param preventionType
      * @return
      */
-    IdentityResultResp runRule(Rule rule, Object[] params);
+    List<IdentityResultResp> run(String businessIdentity, String preventionType);
 }
