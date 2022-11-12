@@ -30,6 +30,7 @@
         <module>blazkowicz-configuration/configuration-client</module>
         <module>blazkowicz-configuration/configuration-application</module>
         <module>blazkowicz-running/running-controller</module>
+        <module>blazkowicz-client-share</module>
     </modules>
 
     <properties>
@@ -120,6 +121,11 @@
             <dependency>
                 <groupId>com.bupt</groupId>
                 <artifactId>configuration-client</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.bupt</groupId>
+                <artifactId>blazkowicz-client-share</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

@@ -18,6 +18,14 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.bupt</groupId>
+            <artifactId>blazkowicz-client-share</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

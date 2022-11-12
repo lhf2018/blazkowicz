@@ -1,4 +1,4 @@
-package com.bupt.running.client.api.result;
+package com.bupt.client.share.dto.result;
 
 import java.io.Serializable;
 

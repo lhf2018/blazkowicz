@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bupt.client.share.dto.result.ResultDTO;
 import com.bupt.running.client.api.PreventionService;
 import com.bupt.running.client.api.req.PreventionReq;
 import com.bupt.running.client.api.resp.PreventionResultResp;
-import com.bupt.running.client.api.result.ResultDTO;
 
 import groovy.util.logging.Slf4j;
 

@@ -1,8 +1,8 @@
 package com.bupt.running.client.api;
 
+import com.bupt.client.share.dto.result.ResultDTO;
 import com.bupt.running.client.api.req.PreventionReq;
 import com.bupt.running.client.api.resp.PreventionResultResp;
-import com.bupt.running.client.api.result.ResultDTO;
 
 /**
  * @author lhf2018

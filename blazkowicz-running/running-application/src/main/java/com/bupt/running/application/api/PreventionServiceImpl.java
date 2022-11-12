@@ -5,13 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.bupt.client.share.dto.result.ResultDTO;
 import com.bupt.domain.share.entity.BusinessIdentity;
 import com.bupt.domain.share.entity.PreventionType;
 import com.bupt.running.application.translator.ToIdentityResultRespList;
 import com.bupt.running.client.api.PreventionService;
 import com.bupt.running.client.api.req.PreventionReq;
 import com.bupt.running.client.api.resp.PreventionResultResp;
-import com.bupt.running.client.api.result.ResultDTO;
 import com.bupt.running.domain.support.rule.IdentityResultResp;
 import com.bupt.running.domain.support.rule.RulePort;
 
