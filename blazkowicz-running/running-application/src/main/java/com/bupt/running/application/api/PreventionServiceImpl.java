@@ -11,6 +11,7 @@ import com.bupt.running.application.translator.ToIdentityResultRespList;
 import com.bupt.running.client.api.PreventionService;
 import com.bupt.running.client.api.req.PreventionReq;
 import com.bupt.running.client.api.resp.PreventionResultResp;
+import com.bupt.running.client.api.result.ResultDTO;
 import com.bupt.running.domain.support.rule.IdentityResultResp;
 import com.bupt.running.domain.support.rule.RulePort;
 
@@ -25,13 +26,13 @@ public class PreventionServiceImpl implements PreventionService {
     private RulePort rulePort;
 
     @Override
-    public PreventionResultResp request(PreventionReq preventionReq) {
+    public ResultDTO<PreventionResultResp> request(PreventionReq preventionReq) {
         BusinessIdentity businessIdentity = BusinessIdentity.valueOf(preventionReq.getBusinessIdentity());
         PreventionType preventionType = PreventionType.valueOf(preventionReq.getPreventionType());
         List<IdentityResultResp> result = rulePort.run(businessIdentity.name(), preventionType.name());
 
         PreventionResultResp preventionResultResp = new PreventionResultResp();
         preventionResultResp.setIdentityResultRespList(ToIdentityResultRespList.toIdentityResultRespList(result));
-        return preventionResultResp;
+        return ResultDTO.buildSuccessResult(preventionResultResp);
     }
 }

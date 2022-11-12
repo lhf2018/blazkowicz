@@ -2,6 +2,7 @@ package com.bupt.running.client.api;
 
 import com.bupt.running.client.api.req.PreventionReq;
 import com.bupt.running.client.api.resp.PreventionResultResp;
+import com.bupt.running.client.api.result.ResultDTO;
 
 /**
  * @author lhf2018
@@ -14,5 +15,5 @@ public interface PreventionService {
      * @param preventionReq
      * @return
      */
-    PreventionResultResp request(PreventionReq preventionReq);
+    ResultDTO<PreventionResultResp> request(PreventionReq preventionReq);
 }

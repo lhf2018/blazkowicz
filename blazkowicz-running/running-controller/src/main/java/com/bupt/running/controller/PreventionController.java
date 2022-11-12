@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bupt.running.client.api.PreventionService;
 import com.bupt.running.client.api.req.PreventionReq;
 import com.bupt.running.client.api.resp.PreventionResultResp;
+import com.bupt.running.client.api.result.ResultDTO;
 
 import groovy.util.logging.Slf4j;
 
@@ -24,7 +25,7 @@ public class PreventionController {
     private PreventionService preventionService;
 
     @RequestMapping("/request")
-    public PreventionResultResp process(HttpServletRequest request) {
+    public ResultDTO<PreventionResultResp> process(HttpServletRequest request) {
         PreventionReq preventionReq = new PreventionReq();
         String preventionType = request.getParameter("prevention_type");
         String businessIdentity = request.getParameter("business_identity");

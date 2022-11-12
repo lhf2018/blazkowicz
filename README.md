@@ -13,6 +13,6 @@ http://127.0.0.1:8080/prevention/request?prevention_type=TEST&business_identity=
 * BlazkowiczException内容
 * 并发处理
 * 聚合根等注解
-* ResutltDTO
+* ApiAspect
 * 单测配置applicationTest
 * 日志打印
