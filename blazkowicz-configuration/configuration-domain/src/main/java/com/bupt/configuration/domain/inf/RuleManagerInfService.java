@@ -1,6 +1,6 @@
 package com.bupt.configuration.domain.inf;
 
-import com.bupt.domain.share.entity.Rule;
+import com.bupt.domain.share.entity.ConfigurationRule;
 
 /**
  * @author lhf2018
@@ -11,8 +11,8 @@ public interface RuleManagerInfService {
     /**
      * 创建规则
      * 
-     * @param rule
+     * @param configurationRule
      */
-    void createRule(Rule rule);
+    void createRule(ConfigurationRule configurationRule);
 
 }

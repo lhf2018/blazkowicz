@@ -12,7 +12,7 @@ import com.bupt.common.beanfinder.Finder;
 @Component
 public class RunningDomainBridge {
     private static Finder finder;
-    public static final String CURRENT_PACKAGE = "com.bupt.running,domain";
+    public static final String CURRENT_PACKAGE = "com.bupt.running.domain";
 
     @Autowired
     public void setPrototypeBeanFinder(Finder finder) {

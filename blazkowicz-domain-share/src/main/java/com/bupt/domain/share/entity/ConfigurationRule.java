@@ -3,19 +3,21 @@ package com.bupt.domain.share.entity;
 import lombok.Getter;
 
 /**
- * 最终生产管理的规则 //todo 值对象
+ * 配置态规则 //todo 值对象
  * 
  * @author lhf2018
  * @date 2022/10/15 16:18
  */
 @Getter
-public class Rule {
+public class ConfigurationRule {
+    private Long id;
     /** 脚本内容 */
     private String script;
     /** 脚本名称 */
     private String name;
 
-    public Rule(String name, String script) {
+    public ConfigurationRule(Long id, String script, String name) {
+        this.id = id;
         this.script = script;
         this.name = name;
     }

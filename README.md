@@ -8,11 +8,14 @@ http://127.0.0.1:8080/prevention/request?prevention_type=TEST&business_identity=
 
 ## todo
 
-* 统一处理异常
+* Prevention实体
 * sequence
-* BlazkowiczException内容
+* ConfigurationRule的构造方法
 * 并发处理
 * 聚合根等注解
-* ApiAspect
 * 单测配置applicationTest
-* 日志打印
+* 接入nosql
+* 内存缓存
+* 接入缓存
+* 配置态更新
+* 接入mysql
