@@ -3,7 +3,7 @@ package com.bupt.running.application.api;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.bupt.client.share.dto.result.ResultDTO;
 import com.bupt.domain.share.entity.BusinessIdentity;
@@ -19,7 +19,7 @@ import com.bupt.running.domain.support.rule.RulePort;
  * @author lhf2018
  * @date 2022/10/29 15:45
  */
-@Component
+@Service
 public class PreventionServiceImpl implements PreventionService {
 
     @Autowired

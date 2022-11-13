@@ -11,7 +11,7 @@ import com.bupt.running.client.api.PreventionService;
 import com.bupt.running.client.api.req.PreventionReq;
 import com.bupt.running.client.api.resp.PreventionResultResp;
 
-import groovy.util.logging.Slf4j;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author lhf2018

@@ -31,6 +31,7 @@
         <module>blazkowicz-configuration/configuration-application</module>
         <module>blazkowicz-running/running-controller</module>
         <module>blazkowicz-client-share</module>
+        <module>blazkowicz-application-share</module>
     </modules>
 
     <properties>
@@ -71,6 +72,11 @@
             <dependency>
                 <groupId>com.bupt</groupId>
                 <artifactId>running-controller</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.bupt</groupId>
+                <artifactId>blazkowicz-application-share</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -167,6 +173,11 @@
                 <groupId>org.aspectj</groupId>
                 <artifactId>aspectjweaver</artifactId>
                 <version>1.9.6</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>1.2.83</version>
             </dependency>
             <!-- external lib end -->
         </dependencies>

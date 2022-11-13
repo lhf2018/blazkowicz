@@ -27,10 +27,10 @@ public class ResultDTO<T> implements Serializable {
     }
 
     public static <T> ResultDTO<Void> buildFailResult(Integer code, String msg) {
-        return ResultDTO.<Void>builder().success(false).msg(msg).build();
+        return ResultDTO.<Void>builder().code(code).success(false).msg(msg).build();
     }
 
     public static <T> ResultDTO<Void> buildFailResult(Integer code) {
-        return ResultDTO.<Void>builder().success(false).build();
+        return ResultDTO.<Void>builder().code(code).success(false).build();
     }
 }

@@ -2,6 +2,7 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
   <parent>
     <groupId>com.bupt</groupId>
     <artifactId>blazkowicz</artifactId>
@@ -10,7 +11,7 @@
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
-  <artifactId>blazkowicz-client-share</artifactId>
+  <artifactId>blazkowicz-application-share</artifactId>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -20,8 +21,12 @@
 
   <dependencies>
     <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
+      <groupId>com.bupt</groupId>
+      <artifactId>blazkowicz-client-share</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.bupt</groupId>
+      <artifactId>blazkowicz-domain-share</artifactId>
     </dependency>
   </dependencies>
 </project>
