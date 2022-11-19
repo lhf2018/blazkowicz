@@ -12,4 +12,6 @@ public class PreventionReq {
     private String businessIdentity;
     /** 防控类型 */
     private String preventionType;
+    /** 用户id */
+    private String userId;
 }

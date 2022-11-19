@@ -5,9 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.bupt.domain.share.inf.NosqlInfService;
-import com.bupt.infrastructure.share.resp.RuleParamResp;
-import com.bupt.infrastructure.share.resp.RuleScriptResp;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.TypeReference;
+import com.bupt.domain.share.entity.Rule;
+import com.bupt.domain.share.repo.RuleRepo;
+import com.bupt.infrastructure.share.inf.NosqlInfService;
+import com.bupt.infrastructure.share.resp.RunningRuleResp;
 import com.google.common.collect.Lists;
 
 /**
@@ -20,9 +23,9 @@ import com.google.common.collect.Lists;
 public class RuleQueryService {
     @Autowired
     private NosqlInfService nosqlInfService;
+    @Autowired
+    private RuleRepo ruleRepo;
 
-    private static final String RULE_SCRIPT_PREFIX = "rule_script_";
-    private static final String RULE_PARAM_PREFIX = "rule_param_";
     private static final String RULE_LIST_PREFIX = "rule_list_";
 
     /**
@@ -35,23 +38,24 @@ public class RuleQueryService {
     public List<String> getRuleList(String businessIdentity, String preventionType) {
         String key = RULE_LIST_PREFIX + businessIdentity + "_" + preventionType;
         String value = nosqlInfService.getValue(key);
-        // todo nosql+内容解析
-        return Lists.newArrayList();
+        return JSON.parseObject(value, new TypeReference<List<String>>() {});
     }
 
-    public RuleScriptResp getRuleScriptResp(String businessIdentity, String preventionType, String ruleId) {
-        String key = RULE_SCRIPT_PREFIX + businessIdentity + "_" + preventionType + "_" + ruleId;;
+    public List<RunningRuleResp> getRunningRuleRespList(String businessIdentity, String preventionType) {
+        String key = RULE_LIST_PREFIX + businessIdentity + "_" + preventionType;
         String value = nosqlInfService.getValue(key);
-        // todo nosql+内容解析
-        return new RuleScriptResp();
-    }
+        List<String> ruleIds = JSON.parseObject(value, new TypeReference<List<String>>() {});
 
-    public RuleParamResp getRuleParamResp(String businessIdentity, String preventionType, String ruleId) {
-        String key = RULE_PARAM_PREFIX + businessIdentity + "_" + preventionType + "_" + ruleId;
-        String value = nosqlInfService.getValue(key);
-        // todo nosql+内容解析
-        RuleParamResp ruleParamResp = new RuleParamResp();
-        return ruleParamResp;
+        List<RunningRuleResp> runningRuleRespList = Lists.newArrayList();
+        ruleIds.forEach(ruleId -> {
+            Rule rule = ruleRepo.get(ruleId);
+            RunningRuleResp resp = new RunningRuleResp();
+            resp.setName(rule.getRuleName());
+            resp.setScript(rule.getRuleScript().getContent());
+            resp.setParams(Lists.newArrayList(null, rule.getRightParam().getValue()).toArray());
+            resp.setRuleId(rule.getRuleId());
+            runningRuleRespList.add(resp);
+        });
+        return runningRuleRespList;
     }
-
 }

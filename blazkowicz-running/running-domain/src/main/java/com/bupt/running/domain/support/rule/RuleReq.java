@@ -15,8 +15,10 @@ public class RuleReq {
     private String script;
     /** 脚本id */
     private String id;
-    /** 脚本参数 */
-    private Object[] params;
+    /** 脚本右参数 */
+    private Object[] rightParams;
+    /** 脚本左参数 */
+    private Object leftParam;
 
     @Tolerate
     public RuleReq() {}

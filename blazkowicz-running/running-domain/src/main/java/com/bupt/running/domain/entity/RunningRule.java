@@ -14,11 +14,11 @@ public class RunningRule {
     /** 脚本 */
     private String script;
     /** 参数 */
-    private Object[] params;
+    private Object[] rightParams;
 
-    public RunningRule(String id, String script, Object[] params) {
+    public RunningRule(String id, String script, Object[] rightParams) {
         this.id = id;
         this.script = script;
-        this.params = params;
+        this.rightParams = rightParams;
     }
 }

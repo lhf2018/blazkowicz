@@ -29,8 +29,10 @@ public class PreventionController {
         PreventionReq preventionReq = new PreventionReq();
         String preventionType = request.getParameter("prevention_type");
         String businessIdentity = request.getParameter("business_identity");
+        String userId = request.getParameter("user_id");
         preventionReq.setPreventionType(preventionType);
         preventionReq.setBusinessIdentity(businessIdentity);
+        preventionReq.setUserId(userId);
         return preventionService.request(preventionReq);
     }
 }

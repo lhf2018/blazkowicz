@@ -7,12 +7,11 @@ import org.springframework.stereotype.Component;
 
 import com.bupt.domain.share.entity.Status;
 import com.bupt.infrastructure.share.query.RuleQueryService;
-import com.bupt.infrastructure.share.resp.RuleParamResp;
-import com.bupt.infrastructure.share.resp.RuleScriptResp;
+import com.bupt.infrastructure.share.resp.RunningRuleResp;
 import com.bupt.running.domain.inf.RuleEngineInfService;
 import com.bupt.running.domain.support.rule.RuleReq;
 import com.bupt.running.domain.support.rule.RuleResp;
-import com.google.common.collect.Lists;
+import com.bupt.running.infrastructure.translator.ToRuleRespListTranslator;
 
 /**
  * @author lhf2018
@@ -28,28 +27,22 @@ public class RuleEngineInfServiceImpl implements RuleEngineInfService {
     private static final String DEFAULT_METHOD = "run";
 
     @Override
-    public List<RuleResp> getRuleRespList(String businessIdentity, String preventionType) {
-        List<String> ruleIds = ruleQueryService.getRuleList(businessIdentity, preventionType);
-        List<RuleResp> ruleRespList = Lists.newArrayList();
-        ruleIds.forEach(ruleId -> {
-            RuleParamResp ruleParamResp = ruleQueryService.getRuleParamResp(businessIdentity, preventionType, ruleId);
-            RuleScriptResp ruleScriptResp =
-                ruleQueryService.getRuleScriptResp(businessIdentity, preventionType, ruleId);
-            RuleResp ruleResp = RuleResp.builder().id(ruleId).params(ruleParamResp.getParams())
-                .script(ruleScriptResp.getScript()).build();
-            ruleRespList.add(ruleResp);
-        });
-
-        return ruleRespList;
-    }
-
-    @Override
     public Status runRule(RuleReq ruleReq) {
+        Object[] params = new Object[ruleReq.getRightParams().length + 1];
+        params[0] = ruleReq.getLeftParam();
+        System.arraycopy(ruleReq.getRightParams(), 0, params, 1, ruleReq.getRightParams().length);
         try {
-            Boolean result = (Boolean)groovyInfService.run(ruleReq.getScript(), DEFAULT_METHOD, ruleReq.getParams());
+            Boolean result = (Boolean)groovyInfService.run(ruleReq.getScript(), DEFAULT_METHOD, params);
             return result.equals(Boolean.TRUE) ? Status.NOT_MEET : Status.MEET;
         } catch (Throwable e) {
             return Status.ERROR;
         }
+    }
+
+    @Override
+    public List<RuleResp> getRuleRespList(String businessIdentity, String preventionType) {
+        List<RunningRuleResp> runningRuleRespList =
+            ruleQueryService.getRunningRuleRespList(businessIdentity, preventionType);
+        return ToRuleRespListTranslator.toRuleRespList(runningRuleRespList);
     }
 }

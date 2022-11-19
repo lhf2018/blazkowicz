@@ -26,8 +26,9 @@ public class PortMockAspect {
             RuleResp resp = new RuleResp();
             resp.setId("12333");
             resp.setParams(new Object[] {"test"});
-            resp.setScript("class Main {\n" + "    static boolean run(String param) {\n"
-                + "        return param == \"test\"\n" + "    }\n" + "}");
+            resp.setScript("class Main {\n" + "    static boolean run(String userId, String param) {\n"
+                + "        if (userId == \"114515\") {\n" + "            return param == \"test\"\n"
+                + "        } else {\n" + "            return false;\n" + "        }\n" + "    }\n" + "}");
             return Lists.newArrayList(resp);
         } else {
             return pjp.proceed();
