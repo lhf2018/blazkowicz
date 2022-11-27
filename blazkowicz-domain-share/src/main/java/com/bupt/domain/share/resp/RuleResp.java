@@ -1,4 +1,4 @@
-package com.bupt.running.domain.support.rule;
+package com.bupt.domain.share.resp;
 
 import lombok.Builder;
 import lombok.Data;

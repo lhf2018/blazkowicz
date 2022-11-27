@@ -5,13 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.bupt.domain.share.entity.BusinessIdentity;
+import com.bupt.domain.share.entity.PreventionType;
 import com.bupt.domain.share.entity.Status;
+import com.bupt.domain.share.repo.RuleRepo;
+import com.bupt.domain.share.resp.RuleResp;
 import com.bupt.infrastructure.share.query.RuleQueryService;
-import com.bupt.infrastructure.share.resp.RunningRuleResp;
 import com.bupt.running.domain.inf.RuleEngineInfService;
 import com.bupt.running.domain.support.rule.RuleReq;
-import com.bupt.running.domain.support.rule.RuleResp;
-import com.bupt.running.infrastructure.translator.ToRuleRespListTranslator;
 
 /**
  * @author lhf2018
@@ -23,6 +24,8 @@ public class RuleEngineInfServiceImpl implements RuleEngineInfService {
     private GroovyInfService groovyInfService;
     @Autowired
     private RuleQueryService ruleQueryService;
+    @Autowired
+    private RuleRepo ruleRepo;
 
     private static final String DEFAULT_METHOD = "run";
 
@@ -39,10 +42,16 @@ public class RuleEngineInfServiceImpl implements RuleEngineInfService {
         }
     }
 
+    /**
+     * 返回策略列表
+     *
+     * @param businessIdentity
+     * @param preventionType
+     * @return
+     */
     @Override
     public List<RuleResp> getRuleRespList(String businessIdentity, String preventionType) {
-        List<RunningRuleResp> runningRuleRespList =
-            ruleQueryService.getRunningRuleRespList(businessIdentity, preventionType);
-        return ToRuleRespListTranslator.toRuleRespList(runningRuleRespList);
+        return ruleQueryService.getRuleRespList(BusinessIdentity.valueOf(businessIdentity),
+            PreventionType.valueOf(preventionType));
     }
 }

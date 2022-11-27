@@ -3,8 +3,8 @@ package com.bupt.running.domain.translator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.bupt.domain.share.resp.RuleResp;
 import com.bupt.running.domain.entity.RunningRule;
-import com.bupt.running.domain.support.rule.RuleResp;
 
 /**
  * @author lhf2018

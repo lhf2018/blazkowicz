@@ -7,7 +7,7 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 import com.bupt.common.utils.MockSwitch;
-import com.bupt.running.domain.support.rule.RuleResp;
+import com.bupt.domain.share.resp.RuleResp;
 import com.google.common.collect.Lists;
 
 /**

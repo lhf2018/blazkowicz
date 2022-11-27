@@ -5,11 +5,11 @@ import java.util.List;
 import com.bupt.domain.share.entity.BusinessIdentity;
 import com.bupt.domain.share.entity.PreventionType;
 import com.bupt.domain.share.entity.Status;
+import com.bupt.domain.share.resp.RuleResp;
 import com.bupt.running.domain.bridge.RunningDomainBridge;
 import com.bupt.running.domain.inf.RuleEngineInfService;
 import com.bupt.running.domain.support.rule.IdentityResultResp;
 import com.bupt.running.domain.support.rule.RuleReq;
-import com.bupt.running.domain.support.rule.RuleResp;
 import com.bupt.running.domain.translator.ToRunningRuleListTranslator;
 import com.google.common.collect.Lists;
 

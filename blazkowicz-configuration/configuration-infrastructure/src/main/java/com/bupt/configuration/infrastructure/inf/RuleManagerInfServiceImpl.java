@@ -1,9 +1,11 @@
 package com.bupt.configuration.infrastructure.inf;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.bupt.configuration.domain.inf.RuleManagerInfService;
 import com.bupt.domain.share.entity.ConfigurationRule;
+import com.bupt.infrastructure.share.inf.NosqlInfService;
 
 /**
  * @author lhf2018
@@ -11,6 +13,8 @@ import com.bupt.domain.share.entity.ConfigurationRule;
  */
 @Component
 public class RuleManagerInfServiceImpl implements RuleManagerInfService {
+    @Autowired
+    private NosqlInfService nosqlInfService;
 
     @Override
     public void createRule(ConfigurationRule configurationRule) {
