@@ -1,11 +1,15 @@
 package com.bupt.configuration.domain.entity;
 
-import com.bupt.common.exception.BlazkowiczException;
-import com.bupt.common.exception.Code;
-import lombok.Getter;
+import java.util.List;
+
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.List;
+import com.bupt.common.exception.BlazkowiczException;
+import com.bupt.common.exception.Code;
+import com.bupt.domain.share.entity.BusinessIdentity;
+import com.bupt.domain.share.entity.PreventionType;
+
+import lombok.Getter;
 
 /**
  * @author lhf2018
@@ -22,39 +26,42 @@ public class StrategyPack {
     /** 描述 */
     private String description;
     /** 策略列表 */
-    private List<Strategy> strategyList;
+    private List<ConfigurationStrategy> configurationStrategyList;
 
     /** 业务身份 */
-    private final String businessIdentity;
+    private final BusinessIdentity businessIdentity;
 
     /** 防控场景 */
-    private final String preventionType;
+    private final PreventionType preventionType;
 
     /** 策略包名称 */
     private final String name;
 
-    public StrategyPack(String owningEvent, String lastOperator, String description, List<Strategy> strategyList,
-        String businessIdentity, String preventionType, String name) {
+    public StrategyPack(String owningEvent, String lastOperator, String description,
+        List<ConfigurationStrategy> configurationStrategyList, BusinessIdentity businessIdentity,
+        PreventionType preventionType, String name) {
         this.owningEvent = owningEvent;
         this.lastOperator = lastOperator;
         this.description = description;
-        this.strategyList = strategyList;
+        this.configurationStrategyList = configurationStrategyList;
         this.businessIdentity = businessIdentity;
         this.preventionType = preventionType;
         this.name = name;
     }
 
-    public void addStrategy(Strategy newStrategy) {
-        if (newStrategy == null) {
+    public void addStrategy(ConfigurationStrategy newConfigurationStrategy) {
+        if (newConfigurationStrategy == null) {
             throw new BlazkowiczException(Code.DOMAIN_STRATEGY_ERROR);
         }
-        if (!StringUtils.equals(newStrategy.getBusinessIdentity(), businessIdentity)) {
+        if (newConfigurationStrategy.getBusinessIdentity() != businessIdentity) {
             throw new BlazkowiczException(Code.DOMAIN_STRATEGY_ERROR);
+
         }
-        if (!StringUtils.equals(newStrategy.getPreventionType(), preventionType)) {
+        if (newConfigurationStrategy.getPreventionType() != preventionType) {
             throw new BlazkowiczException(Code.DOMAIN_STRATEGY_ERROR);
+
         }
-        strategyList.add(newStrategy);
+        configurationStrategyList.add(newConfigurationStrategy);
     }
 
     public void updateLastOperator(String newLastOperator) {

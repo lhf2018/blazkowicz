@@ -31,4 +31,9 @@ public class RuleRepoImpl implements RuleRepo {
         // todo
         return null;
     }
+
+    @Override
+    public void save(Rule rule) {
+
+    }
 }

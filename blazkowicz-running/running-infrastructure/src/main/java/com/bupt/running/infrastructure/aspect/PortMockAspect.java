@@ -1,5 +1,7 @@
 package com.bupt.running.infrastructure.aspect;
 
+import java.util.List;
+
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -7,7 +9,8 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 import com.bupt.common.utils.MockSwitch;
-import com.bupt.domain.share.resp.RuleResp;
+import com.bupt.domain.share.entity.*;
+import com.bupt.running.domain.entity.RunningStrategy;
 import com.google.common.collect.Lists;
 
 /**
@@ -17,21 +20,27 @@ import com.google.common.collect.Lists;
 @Component
 @Aspect
 public class PortMockAspect {
-    @Pointcut("execution(public * com.bupt.running.infrastructure.inf.RuleEngineInfServiceImpl.getRuleRespList(..))")
+    @Pointcut("execution(public * com.bupt.running.infrastructure.inf.RuleEngineInfServiceImpl.getRunningStrategyList(..))")
     public void getRuleList() {}
 
     @Around("getRuleList()")
     public Object mockGetRuleList(ProceedingJoinPoint pjp) throws Throwable {
         if (MockSwitch.MOCK) {
-            RuleResp resp = new RuleResp();
-            resp.setId("12333");
-            resp.setParams(new Object[] {"test"});
-            resp.setScript("class Main {\n" + "    static boolean run(String userId, String param) {\n"
-                + "        if (userId == \"114515\") {\n" + "            return param == \"test\"\n"
-                + "        } else {\n" + "            return false;\n" + "        }\n" + "    }\n" + "}");
-            return Lists.newArrayList(resp);
+            RunningStrategy runningStrategy = new RunningStrategy(getRule());
+            return Lists.newArrayList(runningStrategy);
         } else {
             return pjp.proceed();
         }
+    }
+
+    private static final String SCRIPT = "class Main {\n" + "    static boolean run(String userId, String param) {\n"
+        + "        if (userId == \"114515\") {\n" + "            return param == \"test\"\n" + "        } else {\n"
+        + "            return false;\n" + "        }\n" + "    }\n" + "}";
+
+    private Rule getRule() {
+        RuleScript ruleScript = new RuleScript(SCRIPT, RuleScriptType.GROOVY);
+        List<Condition> conditionList = Lists.newArrayList();
+        conditionList.add(new Condition(ConditionType.CONSTANT, "param", "test"));
+        return new Rule("12333", "测试", ruleScript, conditionList, LeftParamType.ACCOUNT);
     }
 }

@@ -27,8 +27,7 @@ public class PreventionServiceImpl implements PreventionService {
         PreventionType preventionType = PreventionType.valueOf(preventionReq.getPreventionType());
         // todo 创建逻辑
         Prevention prevention = new Prevention(businessIdentity, preventionType);
-        prevention.run(preventionReq.getUserId());
-        List<IdentityResultResp> result = prevention.getLatestResult();
+        List<IdentityResultResp> result = prevention.run(preventionReq.getUserId());
 
         PreventionResultResp preventionResultResp = new PreventionResultResp();
         preventionResultResp.setIdentityResultRespList(ToIdentityResultRespList.toIdentityResultRespList(result));

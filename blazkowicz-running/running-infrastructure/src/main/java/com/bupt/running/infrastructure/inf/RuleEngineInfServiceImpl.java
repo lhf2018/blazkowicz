@@ -7,12 +7,14 @@ import org.springframework.stereotype.Component;
 
 import com.bupt.domain.share.entity.BusinessIdentity;
 import com.bupt.domain.share.entity.PreventionType;
+import com.bupt.domain.share.entity.Rule;
 import com.bupt.domain.share.entity.Status;
-import com.bupt.domain.share.repo.RuleRepo;
-import com.bupt.domain.share.resp.RuleResp;
+import com.bupt.infrastructure.share.inf.NosqlInfService;
 import com.bupt.infrastructure.share.query.RuleQueryService;
+import com.bupt.running.domain.entity.RunningStrategy;
 import com.bupt.running.domain.inf.RuleEngineInfService;
 import com.bupt.running.domain.support.rule.RuleReq;
+import com.google.common.collect.Lists;
 
 /**
  * @author lhf2018
@@ -25,7 +27,7 @@ public class RuleEngineInfServiceImpl implements RuleEngineInfService {
     @Autowired
     private RuleQueryService ruleQueryService;
     @Autowired
-    private RuleRepo ruleRepo;
+    private NosqlInfService nosqlInfService;
 
     private static final String DEFAULT_METHOD = "run";
 
@@ -50,8 +52,13 @@ public class RuleEngineInfServiceImpl implements RuleEngineInfService {
      * @return
      */
     @Override
-    public List<RuleResp> getRuleRespList(String businessIdentity, String preventionType) {
-        return ruleQueryService.getRuleRespList(BusinessIdentity.valueOf(businessIdentity),
+    public List<RunningStrategy> getRunningStrategyList(String businessIdentity, String preventionType) {
+        List<Rule> ruleList = ruleQueryService.getRuleRespList(BusinessIdentity.valueOf(businessIdentity),
             PreventionType.valueOf(preventionType));
+        List<RunningStrategy> runningStrategyList = Lists.newArrayList();
+        ruleList.forEach(rule -> {
+            runningStrategyList.add(new RunningStrategy(rule));
+        });
+        return runningStrategyList;
     }
 }

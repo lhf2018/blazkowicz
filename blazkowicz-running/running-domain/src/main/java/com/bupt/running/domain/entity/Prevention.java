@@ -2,15 +2,16 @@ package com.bupt.running.domain.entity;
 
 import java.util.List;
 
+import com.bupt.domain.share.anno.AggRoot;
 import com.bupt.domain.share.entity.BusinessIdentity;
+import com.bupt.domain.share.entity.Condition;
 import com.bupt.domain.share.entity.PreventionType;
 import com.bupt.domain.share.entity.Status;
-import com.bupt.domain.share.resp.RuleResp;
 import com.bupt.running.domain.bridge.RunningDomainBridge;
 import com.bupt.running.domain.inf.RuleEngineInfService;
 import com.bupt.running.domain.support.rule.IdentityResultResp;
 import com.bupt.running.domain.support.rule.RuleReq;
-import com.bupt.running.domain.translator.ToRunningRuleListTranslator;
+import com.bupt.running.domain.translator.ToParamObjectTranslator;
 import com.google.common.collect.Lists;
 
 import lombok.Getter;
@@ -20,15 +21,14 @@ import lombok.Getter;
  * @date 2022/11/13 23:03
  */
 @Getter
+@AggRoot
 public class Prevention {
     /** 业务身份 */
     private BusinessIdentity businessIdentity;
     /** 防控场景 */
     private PreventionType preventionType;
     /** 规则列表 */
-    private List<RunningRule> runningRuleList;
-    /** 最行执行结果 */
-    private List<IdentityResultResp> latestResult;
+    private List<RunningStrategy> runningStrategyList;
 
     public Prevention(BusinessIdentity businessIdentity, PreventionType preventionType) {
         this.businessIdentity = businessIdentity;
@@ -37,22 +37,24 @@ public class Prevention {
     }
 
     private void init() {
-        List<RuleResp> ruleRespList = RunningDomainBridge.getAdapter(RuleEngineInfService.class)
-            .getRuleRespList(businessIdentity.name(), preventionType.name());
-        this.runningRuleList = ToRunningRuleListTranslator.toRunningRuleList(ruleRespList);
+        this.runningStrategyList = RunningDomainBridge.getAdapter(RuleEngineInfService.class)
+            .getRunningStrategyList(businessIdentity.name(), preventionType.name());
     }
 
-    public void run(Object leftParam) {
+    public List<IdentityResultResp> run(Object leftParam) {
         List<IdentityResultResp> identityResultRespList = Lists.newArrayList();
-        runningRuleList.forEach(rule -> {
+
+        runningStrategyList.forEach(runningStrategy -> {
             IdentityResultResp identityResultResp = new IdentityResultResp();
-            RuleReq ruleReq = RuleReq.builder().id(rule.getId()).rightParams(rule.getRightParams()).leftParam(leftParam)
-                .script(rule.getScript()).build();
+            List<Condition> conditionList = runningStrategy.getRule().getConditions();
+            Object[] params = conditionList.stream().map(ToParamObjectTranslator::toParamObject).toArray();
+
+            RuleReq ruleReq = RuleReq.builder().rightParams(params).leftParam(leftParam)
+                .script(runningStrategy.getRule().getRuleScript().getContent()).build();
             Status status = RunningDomainBridge.getAdapter(RuleEngineInfService.class).runRule(ruleReq);
             identityResultResp.setStatus(status);
-            identityResultResp.setRuleName(rule.getId());
             identityResultRespList.add(identityResultResp);
         });
-        latestResult = identityResultRespList;
+        return identityResultRespList;
     }
 }

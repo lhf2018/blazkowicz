@@ -1,11 +1,10 @@
-package com.bupt.configuration.infrastructure.inf;
+package com.bupt.infrastructure.share.inf;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.bupt.configuration.domain.inf.RuleManagerInfService;
-import com.bupt.domain.share.entity.ConfigurationRule;
-import com.bupt.infrastructure.share.inf.NosqlInfService;
+import com.bupt.domain.share.entity.Rule;
+import com.bupt.domain.share.inf.RuleManagerInfService;
 
 /**
  * @author lhf2018
@@ -17,8 +16,13 @@ public class RuleManagerInfServiceImpl implements RuleManagerInfService {
     private NosqlInfService nosqlInfService;
 
     @Override
-    public void createRule(ConfigurationRule configurationRule) {
+    public void createRule(Rule rule) {
         // todo 写道一个公用的地方，比如nosql系统
+        // todo 且只更新规则
     }
 
+    @Override
+    public void updateRuleCondition(Rule rule) {
+
+    }
 }

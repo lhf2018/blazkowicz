@@ -3,6 +3,7 @@ package com.bupt.configuration.domain.entity;
 import java.util.Date;
 import java.util.List;
 
+import com.bupt.domain.share.anno.AggRoot;
 import com.bupt.domain.share.entity.BusinessIdentity;
 import com.bupt.domain.share.entity.PreventionType;
 import com.bupt.domain.share.entity.Rule;
@@ -16,7 +17,8 @@ import lombok.Getter;
  * @date 2022/10/5 1:12
  */
 @Getter
-public class Strategy {
+@AggRoot
+public class ConfigurationStrategy {
     private final Long strategyId;
     private final Date gmtCreate;
     private Date gmtModified;
@@ -40,7 +42,7 @@ public class Strategy {
     /** 处置 */
     private List<Disposal> disposalList;
 
-    public Strategy(Long strategyId, Date gmtCreate, Date gmtModified, BusinessIdentity businessIdentity,
+    public ConfigurationStrategy(Long strategyId, Date gmtCreate, Date gmtModified, BusinessIdentity businessIdentity,
         PreventionType preventionType, String name, String description, List<Disposal> disposalList) {
         this.strategyId = strategyId;
         this.gmtCreate = gmtCreate;
@@ -52,7 +54,7 @@ public class Strategy {
         this.disposalList = disposalList;
     }
 
-    public Strategy(Long strategyId, Date gmtCreate, Date gmtModified, Integer version,
+    public ConfigurationStrategy(Long strategyId, Date gmtCreate, Date gmtModified, Integer version,
         BusinessIdentity businessIdentity, PreventionType preventionType, String name, String description, Rule rule,
         List<Disposal> disposalList) {
         this.strategyId = strategyId;

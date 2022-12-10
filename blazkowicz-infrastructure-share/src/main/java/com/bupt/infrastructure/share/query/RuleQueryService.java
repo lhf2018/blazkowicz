@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 import com.bupt.domain.share.entity.BusinessIdentity;
 import com.bupt.domain.share.entity.PreventionType;
-import com.bupt.domain.share.resp.RuleResp;
+import com.bupt.domain.share.entity.Rule;
 import com.bupt.infrastructure.share.inf.NosqlInfService;
 
 /**
@@ -28,7 +28,7 @@ public class RuleQueryService {
      * @param preventionType
      * @return
      */
-    public List<RuleResp> getRuleRespList(BusinessIdentity businessIdentity, PreventionType preventionType) {
+    public List<Rule> getRuleRespList(BusinessIdentity businessIdentity, PreventionType preventionType) {
         // todo
         return null;
     }

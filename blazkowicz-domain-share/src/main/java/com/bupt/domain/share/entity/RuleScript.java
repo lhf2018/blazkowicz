@@ -10,4 +10,9 @@ import lombok.Getter;
 public class RuleScript {
     private String content;
     private RuleScriptType type;
+
+    public RuleScript(String content, RuleScriptType type) {
+        this.content = content;
+        this.type = type;
+    }
 }

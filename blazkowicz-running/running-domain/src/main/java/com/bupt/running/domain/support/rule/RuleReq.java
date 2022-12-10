@@ -13,8 +13,6 @@ import lombok.experimental.Tolerate;
 public class RuleReq {
     /** 脚本内容 */
     private String script;
-    /** 脚本id */
-    private String id;
     /** 脚本右参数 */
     private Object[] rightParams;
     /** 脚本左参数 */
