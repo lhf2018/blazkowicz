@@ -15,7 +15,7 @@ http://127.0.0.1:8080/prevention/request?prevention_type=TEST&business_identity=
 * 加白
 * 并发处理
 * ~~聚合根等注解~~
-* 单测配置applicationTest
+* ~~单测配置applicationTest~~
 * 更新eventservice
 * 更新strategyservice
 * 更新规则
@@ -28,5 +28,6 @@ http://127.0.0.1:8080/prevention/request?prevention_type=TEST&business_identity=
 * 内存缓存
 * 接入缓存
 * 配置态更新
-* 接入mysql
+* ~~接入mysql~~
+* Mapper
 * RuleRepoImpl
