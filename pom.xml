@@ -153,6 +153,11 @@
                 <version>1.18.24</version>
                 <scope>provided</scope>
             </dependency>
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>2.1.0</version>
+            </dependency>
             <!-- groovy -->
             <dependency>
                 <groupId>org.codehaus.groovy</groupId>

@@ -3,7 +3,7 @@ package com.bupt.infrastructure;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.bupt.running.infrastructure.inf.GroovyInfService;
+import com.bupt.blazkowicz.running.infrastructure.inf.GroovyInfService;
 
 import groovy.lang.Binding;
 import groovy.util.GroovyScriptEngine;

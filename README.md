@@ -29,5 +29,14 @@ http://127.0.0.1:8080/prevention/request?prevention_type=TEST&business_identity=
 * 接入缓存
 * 配置态更新
 * ~~接入mysql~~
-* Mapper
+* ~~Mapper~~
+* 日志配置
 * RuleRepoImpl
+
+## 建表语句
+
+``
+create table blazkowicz_sequence
+(
+sequence_id int not null, sequence_type varchar(63) not null, id int auto_increment, constraint blazkowicz_sequence_pk primary key (id)
+);``
