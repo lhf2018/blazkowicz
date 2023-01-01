@@ -31,13 +31,13 @@ http://127.0.0.1:8080/prevention/request?prevention_type=TEST&business_identity=
 
 ## 更新记录
 
-#### 2022年1月1号
+#### 2023年1月1号
 
 * 更新文件路径
 * 接入mysql数据库+mapper实现
 * 实现sequenceID
 
-#### 2021年12月31号
+#### 2022年12月31号
 
 * 配置单元测试
 
