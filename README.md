@@ -28,8 +28,13 @@ http://127.0.0.1:8080/prevention/request?prevention_type=TEST&business_identity=
 * 配置态更新
 * 日志配置
 * RuleRepoImpl
+* ruleDO
 
 ## 更新记录
+
+#### 2023年1月8号
+
+* ruleDO相关
 
 #### 2023年1月1号
 
