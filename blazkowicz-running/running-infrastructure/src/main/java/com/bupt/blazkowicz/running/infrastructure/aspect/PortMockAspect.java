@@ -39,8 +39,9 @@ public class PortMockAspect {
 
     private Rule getRule() {
         RuleScript ruleScript = new RuleScript(SCRIPT, RuleScriptType.GROOVY);
-        List<Condition> conditionList = Lists.newArrayList();
-        conditionList.add(new Condition(ConditionType.CONSTANT, "param", "test"));
-        return new Rule("12333", "测试", ruleScript, conditionList, LeftParamType.ACCOUNT);
+        List<RequiredValue> requiredValueList = Lists.newArrayList();
+        requiredValueList.add(new RequiredValue(RequiredValueType.CONSTANT, "param", "test"));
+        Condition condition = new Condition(123, ruleScript, requiredValueList, LeftParamType.ACCOUNT);
+        return new Rule("12333", "测试", Lists.newArrayList(condition), "123");
     }
 }

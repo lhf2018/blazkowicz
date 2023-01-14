@@ -1,25 +1,33 @@
 package com.bupt.blazkowicz.domain.share.entity;
 
+import java.util.List;
+
+import com.bupt.blazkowicz.domain.share.anno.Specification;
+
 import lombok.Getter;
 
 /**
- * 一个condition，对应一个入参
+ * 条件，一个condition等于一条识别逻辑
  * 
  * @author lhf2018
- * @date 2022/11/19 20:47
+ * @date 2023/1/14 23:17
  */
 @Getter
+@Specification
 public class Condition {
-    /** 条件类型 */
-    private ConditionType type;
-    /** 条件名称 */
-    private String name;
-    /** 条件值 */
-    private Object value;
+    private Integer conditionId;
+    /** 脚本 */
+    private RuleScript ruleScript;
+    /** 判断条件 */
+    private List<RequiredValue> requiredValues;
+    /** 左参数类型（外部传入） */
+    private LeftParamType leftParamType;
 
-    public Condition(ConditionType type, String name, Object value) {
-        this.type = type;
-        this.name = name;
-        this.value = value;
+    public Condition(Integer conditionId, RuleScript ruleScript, List<RequiredValue> requiredValues,
+        LeftParamType leftParamType) {
+        this.conditionId = conditionId;
+        this.ruleScript = ruleScript;
+        this.requiredValues = requiredValues;
+        this.leftParamType = leftParamType;
     }
 }

@@ -4,14 +4,13 @@ import java.util.List;
 
 import com.bupt.blazkowicz.domain.share.anno.AggRoot;
 import com.bupt.blazkowicz.domain.share.entity.BusinessIdentity;
-import com.bupt.blazkowicz.domain.share.entity.Condition;
 import com.bupt.blazkowicz.domain.share.entity.PreventionType;
+import com.bupt.blazkowicz.domain.share.entity.Rule;
 import com.bupt.blazkowicz.domain.share.entity.Status;
 import com.bupt.blazkowicz.running.domain.bridge.RunningDomainBridge;
 import com.bupt.blazkowicz.running.domain.inf.RuleEngineInfService;
 import com.bupt.blazkowicz.running.domain.support.rule.IdentityResultResp;
 import com.bupt.blazkowicz.running.domain.support.rule.RuleReq;
-import com.bupt.blazkowicz.running.domain.translator.ToParamObjectTranslator;
 import com.google.common.collect.Lists;
 
 import lombok.Getter;
@@ -45,13 +44,12 @@ public class Prevention {
         List<IdentityResultResp> identityResultRespList = Lists.newArrayList();
 
         runningStrategyList.forEach(runningStrategy -> {
-            IdentityResultResp identityResultResp = new IdentityResultResp();
-            List<Condition> conditionList = runningStrategy.getRule().getConditions();
-            Object[] params = conditionList.stream().map(ToParamObjectTranslator::toParamObject).toArray();
+            Rule rule = runningStrategy.getRule();
+            RuleReq ruleReq = RuleReq.builder().leftParam(leftParam).conditionList(rule.getConditionList())
+                .logic(rule.getLogic()).build();
+            Status status = RunningDomainBridge.getAdapter(RuleEngineInfService.class).run(ruleReq);
 
-            RuleReq ruleReq = RuleReq.builder().rightParams(params).leftParam(leftParam)
-                .script(runningStrategy.getRule().getRuleScript().getContent()).build();
-            Status status = RunningDomainBridge.getAdapter(RuleEngineInfService.class).runRule(ruleReq);
+            IdentityResultResp identityResultResp = new IdentityResultResp();
             identityResultResp.setStatus(status);
             identityResultRespList.add(identityResultResp);
         });

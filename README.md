@@ -32,6 +32,10 @@ http://127.0.0.1:8080/prevention/request?prevention_type=TEST&business_identity=
 
 ## 更新记录
 
+#### 2023年1月14
+
+* 使用jxel：一条规则可以处理多条脚本识别逻辑结果
+
 #### 2023年1月8号
 
 * ruleDO相关

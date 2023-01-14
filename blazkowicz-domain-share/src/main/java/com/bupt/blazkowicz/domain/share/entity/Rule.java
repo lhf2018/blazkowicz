@@ -17,19 +17,15 @@ public class Rule {
     private String ruleId;
     /** 名称 */
     private String ruleName;
-    /** 脚本 */
-    private RuleScript ruleScript;
-    /** 判断条件 */
-    private List<Condition> conditions;
-    /** 左参数类型（外部传入） */
-    private LeftParamType leftParamType;
+    /** 条件 */
+    private List<Condition> conditionList;
+    /** 条件逻辑 */
+    private String logic;
 
-    public Rule(String ruleId, String ruleName, RuleScript ruleScript, List<Condition> conditions,
-        LeftParamType leftParamType) {
+    public Rule(String ruleId, String ruleName, List<Condition> conditionList, String logic) {
         this.ruleId = ruleId;
         this.ruleName = ruleName;
-        this.ruleScript = ruleScript;
-        this.conditions = conditions;
-        this.leftParamType = leftParamType;
+        this.conditionList = conditionList;
+        this.logic = logic;
     }
 }

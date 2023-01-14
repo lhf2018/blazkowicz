@@ -1,5 +1,9 @@
 package com.bupt.blazkowicz.running.domain.support.rule;
 
+import java.util.List;
+
+import com.bupt.blazkowicz.domain.share.entity.Condition;
+
 import lombok.Builder;
 import lombok.Data;
 import lombok.experimental.Tolerate;
@@ -11,12 +15,12 @@ import lombok.experimental.Tolerate;
 @Data
 @Builder
 public class RuleReq {
-    /** 脚本内容 */
-    private String script;
-    /** 脚本右参数 */
-    private Object[] rightParams;
     /** 脚本左参数 */
     private Object leftParam;
+    /** 条件列表 */
+    private List<Condition> conditionList;
+    /** 条件逻辑 */
+    private String logic;
 
     @Tolerate
     public RuleReq() {}

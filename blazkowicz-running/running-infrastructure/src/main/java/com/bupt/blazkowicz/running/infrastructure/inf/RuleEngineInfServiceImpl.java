@@ -1,19 +1,19 @@
 package com.bupt.blazkowicz.running.infrastructure.inf;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.bupt.blazkowicz.domain.share.entity.BusinessIdentity;
-import com.bupt.blazkowicz.domain.share.entity.PreventionType;
-import com.bupt.blazkowicz.domain.share.entity.Rule;
-import com.bupt.blazkowicz.domain.share.entity.Status;
+import com.bupt.blazkowicz.common.utils.LogicUtil;
+import com.bupt.blazkowicz.domain.share.entity.*;
 import com.bupt.blazkowicz.infrastructure.share.inf.NosqlInfService;
 import com.bupt.blazkowicz.infrastructure.share.query.RuleQueryService;
 import com.bupt.blazkowicz.running.domain.entity.RunningStrategy;
 import com.bupt.blazkowicz.running.domain.inf.RuleEngineInfService;
 import com.bupt.blazkowicz.running.domain.support.rule.RuleReq;
+import com.bupt.blazkowicz.running.domain.translator.ToParamObjectTranslator;
 import com.google.common.collect.Lists;
 
 /**
@@ -32,16 +32,24 @@ public class RuleEngineInfServiceImpl implements RuleEngineInfService {
     private static final String DEFAULT_METHOD = "run";
 
     @Override
-    public Status runRule(RuleReq ruleReq) {
-        Object[] params = new Object[ruleReq.getRightParams().length + 1];
-        params[0] = ruleReq.getLeftParam();
-        System.arraycopy(ruleReq.getRightParams(), 0, params, 1, ruleReq.getRightParams().length);
+    public Status run(RuleReq ruleReq) {
+        final String[] logic = {ruleReq.getLogic()};
         try {
-            Boolean result = (Boolean)groovyInfService.run(ruleReq.getScript(), DEFAULT_METHOD, params);
-            return result.equals(Boolean.TRUE) ? Status.NOT_MEET : Status.MEET;
+            ruleReq.getConditionList().forEach(condition -> {
+                List<RequiredValue> requiredValueList = condition.getRequiredValues();
+                List<Object> paramList = Lists.newArrayList();
+                paramList.add(ruleReq.getLeftParam());
+                paramList.addAll(requiredValueList.stream().map(ToParamObjectTranslator::toParamObject)
+                    .collect(Collectors.toList()));
+                Object[] paramArray = paramList.toArray();
+                Boolean result =
+                    (Boolean)groovyInfService.run(condition.getRuleScript().getContent(), DEFAULT_METHOD, paramArray);
+                logic[0] = logic[0].replace(condition.getConditionId().toString(), result.toString());
+            });
         } catch (Throwable e) {
             return Status.ERROR;
         }
+        return LogicUtil.compute(logic[0]) ? Status.NOT_MEET : Status.MEET;
     }
 
     /**

@@ -24,9 +24,9 @@ public interface RuleEngineInfService {
 
     /**
      * 运行规则
-     * 
+     *
      * @param ruleReq
      * @return
      */
-    Status runRule(RuleReq ruleReq);
+    Status run(RuleReq ruleReq);
 }
