@@ -1,21 +1,21 @@
 package com.bupt.blazkowicz.configuration.domain.entity;
 
-import java.util.List;
-
-import org.apache.commons.lang3.StringUtils;
-
 import com.bupt.blazkowicz.common.exception.BlazkowiczException;
 import com.bupt.blazkowicz.common.exception.Code;
+import com.bupt.blazkowicz.domain.share.anno.Entity;
 import com.bupt.blazkowicz.domain.share.entity.BusinessIdentity;
 import com.bupt.blazkowicz.domain.share.entity.PreventionType;
-
 import lombok.Getter;
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.List;
 
 /**
  * @author lhf2018
  * @date 2022/10/15 16:28
  */
 @Getter
+@Entity
 public class StrategyPack {
     /** 所属事件 */
     private final String owningEvent;

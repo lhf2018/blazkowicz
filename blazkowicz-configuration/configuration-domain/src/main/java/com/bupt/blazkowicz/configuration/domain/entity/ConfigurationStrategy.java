@@ -1,14 +1,13 @@
 package com.bupt.blazkowicz.configuration.domain.entity;
 
-import java.util.Date;
-import java.util.List;
-
-import com.bupt.blazkowicz.domain.share.anno.AggRoot;
+import com.bupt.blazkowicz.domain.share.anno.Entity;
 import com.bupt.blazkowicz.domain.share.entity.BusinessIdentity;
 import com.bupt.blazkowicz.domain.share.entity.PreventionType;
 import com.bupt.blazkowicz.domain.share.entity.Rule;
-
 import lombok.Getter;
+
+import java.util.Date;
+import java.util.List;
 
 /**
  * 风险识别
@@ -17,7 +16,7 @@ import lombok.Getter;
  * @date 2022/10/5 1:12
  */
 @Getter
-@AggRoot
+@Entity
 public class ConfigurationStrategy {
     private final Long strategyId;
     private final Date gmtCreate;

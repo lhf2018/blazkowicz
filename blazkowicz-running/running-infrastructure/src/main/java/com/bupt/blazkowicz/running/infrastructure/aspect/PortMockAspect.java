@@ -1,17 +1,16 @@
 package com.bupt.blazkowicz.running.infrastructure.aspect;
 
-import java.util.List;
-
+import com.bupt.blazkowicz.common.utils.MockSwitch;
+import com.bupt.blazkowicz.domain.share.entity.*;
+import com.bupt.blazkowicz.running.domain.entity.RunningStrategy;
+import com.google.common.collect.Lists;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
-import com.bupt.blazkowicz.common.utils.MockSwitch;
-import com.bupt.blazkowicz.domain.share.entity.*;
-import com.bupt.blazkowicz.running.domain.entity.RunningStrategy;
-import com.google.common.collect.Lists;
+import java.util.List;
 
 /**
  * @author lhf2018
@@ -42,6 +41,6 @@ public class PortMockAspect {
         List<RequiredValue> requiredValueList = Lists.newArrayList();
         requiredValueList.add(new RequiredValue(RequiredValueType.CONSTANT, "param", "test"));
         Condition condition = new Condition(123, ruleScript, requiredValueList, LeftParamType.ACCOUNT);
-        return new Rule("12333", "测试", Lists.newArrayList(condition), "123");
+        return new Rule("测试", Lists.newArrayList(condition), "123");
     }
 }
