@@ -1,14 +1,15 @@
 package com.bupt.blazkowicz.configuration.domain.entity;
 
+import com.bupt.blazkowicz.domain.share.anno.AggRoot;
+import com.google.common.collect.Lists;
+import lombok.Getter;
+
 import java.util.Date;
 import java.util.List;
 
-import com.bupt.blazkowicz.domain.share.anno.AggRoot;
-import com.google.common.collect.Lists;
-
-import lombok.Getter;
-
 /**
+ * 事件
+ *
  * @author lhf2018
  * @date 2022/10/5 1:12
  */
@@ -28,6 +29,11 @@ public class Event {
      */
     private List<Feature> featureList;
 
+    /**
+     * 策略包
+     */
+    private StrategyPack strategyPack;
+
     public Event(Long eventId, Date gmtCreate, Date gmtModified, EventInfo eventInfo) {
         this.eventId = eventId;
         this.gmtCreate = gmtCreate;
@@ -37,13 +43,14 @@ public class Event {
     }
 
     public Event(Long eventId, Date gmtCreate, Date gmtModified, Integer version, EventInfo eventInfo,
-        List<Feature> featureList) {
+                 List<Feature> featureList, StrategyPack strategyPack) {
         this.eventId = eventId;
         this.gmtCreate = gmtCreate;
         this.gmtModified = gmtModified;
         this.version = version;
         this.eventInfo = eventInfo;
         this.featureList = featureList;
+        this.strategyPack = strategyPack;
     }
 
     public void addFeature(Feature newFeature) {

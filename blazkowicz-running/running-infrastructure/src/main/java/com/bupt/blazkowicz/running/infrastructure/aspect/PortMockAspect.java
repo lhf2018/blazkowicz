@@ -1,17 +1,16 @@
 package com.bupt.blazkowicz.running.infrastructure.aspect;
 
-import java.util.List;
-
+import com.bupt.blazkowicz.common.utils.MockSwitch;
+import com.bupt.blazkowicz.domain.share.entity.*;
+import com.bupt.blazkowicz.running.domain.entity.RunningStrategy;
+import com.google.common.collect.Lists;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
-import com.bupt.blazkowicz.common.utils.MockSwitch;
-import com.bupt.blazkowicz.domain.share.entity.*;
-import com.bupt.blazkowicz.running.domain.entity.RunningStrategy;
-import com.google.common.collect.Lists;
+import java.util.List;
 
 /**
  * @author lhf2018

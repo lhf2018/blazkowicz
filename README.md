@@ -31,6 +31,9 @@ http://127.0.0.1:8080/prevention/request?prevention_type=TEST&business_identity=
 * 日志配置
 * RuleRepoImpl
 * ruleDO
+* todo扩展除了脚本以外更多类型的规则（黑白名单库等）
+* 规则的外部使用在规则引擎中区分
+* rule规则的创建和更新等，看是否收口到Event中
 
 ## 更新记录
 
@@ -38,6 +41,11 @@ http://127.0.0.1:8080/prevention/request?prevention_type=TEST&business_identity=
 
 * 重命名类+完善strategy的实现
 * 规则工厂
+
+#### 2023年2月21
+
+* 把event和prevention的划分为聚合根
+* 对rule的定义做了完善
 
 #### 2023年1月14
 
