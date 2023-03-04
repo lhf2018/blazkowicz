@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import com.bupt.blazkowicz.common.utils.MockSwitch;
 import com.bupt.blazkowicz.domain.share.entity.*;
+import com.bupt.blazkowicz.domain.share.factory.RuleFactory;
 import com.bupt.blazkowicz.running.domain.entity.RunningStrategy;
 import com.google.common.collect.Lists;
 
@@ -42,6 +43,6 @@ public class PortMockAspect {
         List<RequiredValue> requiredValueList = Lists.newArrayList();
         requiredValueList.add(new RequiredValue(RequiredValueType.CONSTANT, "param", "test"));
         Condition condition = new Condition(1, conditionScript, requiredValueList, LeftParamType.ACCOUNT);
-        return new Rule("测试", Lists.newArrayList(condition), "123");
+        return RuleFactory.create("测试", Lists.newArrayList(condition), "1&2&3")
     }
 }
