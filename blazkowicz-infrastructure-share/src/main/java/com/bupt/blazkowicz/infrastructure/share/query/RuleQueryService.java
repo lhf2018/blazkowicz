@@ -29,7 +29,7 @@ public class RuleQueryService {
      * @return
      */
     public List<Rule> getRuleRespList(BusinessIdentity businessIdentity, PreventionType preventionType) {
-        // todo
+        // todo 获取公共的概念rule
         return null;
     }
 }

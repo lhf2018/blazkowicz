@@ -26,7 +26,7 @@ public class StrategyPack {
     /** 描述 */
     private String description;
     /** 策略列表 */
-    private List<ConfigurationStrategy> configurationStrategyList;
+    private List<Strategy> strategyList;
 
     /** 业务身份 */
     private final BusinessIdentity businessIdentity;
@@ -38,30 +38,29 @@ public class StrategyPack {
     private final String name;
 
     public StrategyPack(String owningEvent, String lastOperator, String description,
-        List<ConfigurationStrategy> configurationStrategyList, BusinessIdentity businessIdentity,
-        PreventionType preventionType, String name) {
+        List<Strategy> strategyList, BusinessIdentity businessIdentity, PreventionType preventionType, String name) {
         this.owningEvent = owningEvent;
         this.lastOperator = lastOperator;
         this.description = description;
-        this.configurationStrategyList = configurationStrategyList;
+        this.strategyList = strategyList;
         this.businessIdentity = businessIdentity;
         this.preventionType = preventionType;
         this.name = name;
     }
 
-    public void addStrategy(ConfigurationStrategy newConfigurationStrategy) {
-        if (newConfigurationStrategy == null) {
+    public void addStrategy(Strategy newStrategy) {
+        if (newStrategy == null) {
             throw new BlazkowiczException(Code.DOMAIN_STRATEGY_ERROR);
         }
-        if (newConfigurationStrategy.getBusinessIdentity() != businessIdentity) {
-            throw new BlazkowiczException(Code.DOMAIN_STRATEGY_ERROR);
-
-        }
-        if (newConfigurationStrategy.getPreventionType() != preventionType) {
+        if (newStrategy.getBusinessIdentity() != businessIdentity) {
             throw new BlazkowiczException(Code.DOMAIN_STRATEGY_ERROR);
 
         }
-        configurationStrategyList.add(newConfigurationStrategy);
+        if (newStrategy.getPreventionType() != preventionType) {
+            throw new BlazkowiczException(Code.DOMAIN_STRATEGY_ERROR);
+
+        }
+        strategyList.add(newStrategy);
     }
 
     public void updateLastOperator(String newLastOperator) {

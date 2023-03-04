@@ -26,23 +26,17 @@ public class Prevention {
     private BusinessIdentity businessIdentity;
     /** 防控场景 */
     private PreventionType preventionType;
-    /** 规则列表 */
-    private List<RunningStrategy> runningStrategyList;
 
     public Prevention(BusinessIdentity businessIdentity, PreventionType preventionType) {
         this.businessIdentity = businessIdentity;
         this.preventionType = preventionType;
-        init();
-    }
-
-    private void init() {
-        this.runningStrategyList = RunningDomainBridge.getAdapter(RuleEngineInfService.class)
-            .getRunningStrategyList(businessIdentity.name(), preventionType.name());
     }
 
     public List<IdentityResultResp> run(Object leftParam) {
-        List<IdentityResultResp> identityResultRespList = Lists.newArrayList();
+        List<RunningStrategy> runningStrategyList = RunningDomainBridge.getAdapter(RuleEngineInfService.class)
+            .getRunningStrategyList(businessIdentity.name(), preventionType.name());
 
+        List<IdentityResultResp> identityResultRespList = Lists.newArrayList();
         runningStrategyList.forEach(runningStrategy -> {
             Rule rule = runningStrategy.getRule();
             RuleReq ruleReq = RuleReq.builder().leftParam(leftParam).conditionList(rule.getConditionList())

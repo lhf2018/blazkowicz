@@ -15,18 +15,19 @@ import lombok.Getter;
 @Getter
 @Specification
 public class Condition {
+    /** 条件id，用于处理复杂逻辑 */
     private Integer conditionId;
     /** 脚本 */
-    private RuleScript ruleScript;
+    private ConditionScript conditionScript;
     /** 判断条件 */
     private List<RequiredValue> requiredValues;
     /** 左参数类型（外部传入） */
     private LeftParamType leftParamType;
 
-    public Condition(Integer conditionId, RuleScript ruleScript, List<RequiredValue> requiredValues,
+    public Condition(Integer conditionId, ConditionScript conditionScript, List<RequiredValue> requiredValues,
         LeftParamType leftParamType) {
         this.conditionId = conditionId;
-        this.ruleScript = ruleScript;
+        this.conditionScript = conditionScript;
         this.requiredValues = requiredValues;
         this.leftParamType = leftParamType;
     }

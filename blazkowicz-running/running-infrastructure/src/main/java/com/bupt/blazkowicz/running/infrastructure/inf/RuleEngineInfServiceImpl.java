@@ -42,8 +42,8 @@ public class RuleEngineInfServiceImpl implements RuleEngineInfService {
                 paramList.addAll(requiredValueList.stream().map(ToParamObjectTranslator::toParamObject)
                     .collect(Collectors.toList()));
                 Object[] paramArray = paramList.toArray();
-                Boolean result =
-                    (Boolean)groovyInfService.run(condition.getRuleScript().getContent(), DEFAULT_METHOD, paramArray);
+                Boolean result = (Boolean)groovyInfService.run(condition.getConditionScript().getContent(),
+                    DEFAULT_METHOD, paramArray);
                 logic[0] = logic[0].replace(condition.getConditionId().toString(), result.toString());
             });
         } catch (Throwable e) {

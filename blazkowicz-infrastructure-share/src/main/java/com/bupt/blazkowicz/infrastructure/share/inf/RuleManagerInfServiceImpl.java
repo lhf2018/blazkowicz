@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import com.bupt.blazkowicz.domain.share.entity.Rule;
 import com.bupt.blazkowicz.domain.share.inf.RuleManagerInfService;
+import com.bupt.blazkowicz.domain.share.repo.RuleRepo;
 
 /**
  * @author lhf2018
@@ -12,8 +13,9 @@ import com.bupt.blazkowicz.domain.share.inf.RuleManagerInfService;
  */
 @Component
 public class RuleManagerInfServiceImpl implements RuleManagerInfService {
+
     @Autowired
-    private NosqlInfService nosqlInfService;
+    private RuleRepo ruleRepo;
 
     @Override
     public void createRule(Rule rule) {

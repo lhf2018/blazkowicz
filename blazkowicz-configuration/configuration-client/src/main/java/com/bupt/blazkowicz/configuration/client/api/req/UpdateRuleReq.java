@@ -1,4 +1,4 @@
-package com.bupt.blazkowicz.client.share.api.req;
+package com.bupt.blazkowicz.configuration.client.api.req;
 
 import lombok.Data;
 
@@ -7,7 +7,7 @@ import lombok.Data;
  * @date 2022/12/31 22:42
  */
 @Data
-public class CreateRuleReq {
+public class UpdateRuleReq {
     private String ruleName;
     private String ruleScript;
 }

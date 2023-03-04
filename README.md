@@ -21,6 +21,8 @@ http://127.0.0.1:8080/prevention/request?prevention_type=TEST&business_identity=
 * RuleConfigurationServiceImpl只更新rule脚本
 * ~~Strategy引入规则，同时更新rule参数~~
 * ~~rule中重写，只有脚本，没有参数，但会对外展示需要什么参数~~
+* strategy中的rule修改和公共configuratioservice中的rule修改之间的关系--只有公共能改，策略中不能改
+* strategyMapper
 * 接入dubbo
 * 接入nosql
 * 内存缓存
@@ -31,6 +33,11 @@ http://127.0.0.1:8080/prevention/request?prevention_type=TEST&business_identity=
 * ruleDO
 
 ## 更新记录
+
+#### 2023年3月4
+
+* 重命名类+完善strategy的实现
+* 规则工厂
 
 #### 2023年1月14
 

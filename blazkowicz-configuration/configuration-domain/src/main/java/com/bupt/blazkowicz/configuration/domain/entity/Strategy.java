@@ -3,6 +3,8 @@ package com.bupt.blazkowicz.configuration.domain.entity;
 import java.util.Date;
 import java.util.List;
 
+import com.bupt.blazkowicz.configuration.domain.bridge.ConfigurationDomainBridge;
+import com.bupt.blazkowicz.configuration.domain.repo.StrategyRepo;
 import com.bupt.blazkowicz.domain.share.anno.AggRoot;
 import com.bupt.blazkowicz.domain.share.entity.BusinessIdentity;
 import com.bupt.blazkowicz.domain.share.entity.PreventionType;
@@ -11,14 +13,14 @@ import com.bupt.blazkowicz.domain.share.entity.Rule;
 import lombok.Getter;
 
 /**
- * 风险识别
+ * 风险识别的策略
  *
  * @author lhf2018
  * @date 2022/10/5 1:12
  */
 @Getter
 @AggRoot
-public class ConfigurationStrategy {
+public class Strategy {
     private final Long strategyId;
     private final Date gmtCreate;
     private Date gmtModified;
@@ -42,7 +44,7 @@ public class ConfigurationStrategy {
     /** 处置 */
     private List<Disposal> disposalList;
 
-    public ConfigurationStrategy(Long strategyId, Date gmtCreate, Date gmtModified, BusinessIdentity businessIdentity,
+    public Strategy(Long strategyId, Date gmtCreate, Date gmtModified, BusinessIdentity businessIdentity,
         PreventionType preventionType, String name, String description, List<Disposal> disposalList) {
         this.strategyId = strategyId;
         this.gmtCreate = gmtCreate;
@@ -54,7 +56,7 @@ public class ConfigurationStrategy {
         this.disposalList = disposalList;
     }
 
-    public ConfigurationStrategy(Long strategyId, Date gmtCreate, Date gmtModified, Integer version,
+    public Strategy(Long strategyId, Date gmtCreate, Date gmtModified, Integer version,
         BusinessIdentity businessIdentity, PreventionType preventionType, String name, String description, Rule rule,
         List<Disposal> disposalList) {
         this.strategyId = strategyId;
@@ -78,12 +80,7 @@ public class ConfigurationStrategy {
         save();
     }
 
-    public void update(Rule rule) {
-        // todo
-        this.rule = rule;
-    }
-
     public void save() {
-        // todo
+        ConfigurationDomainBridge.getAdapter(StrategyRepo.class).save(this);
     }
 }

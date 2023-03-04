@@ -6,7 +6,7 @@ import com.bupt.blazkowicz.domain.share.entity.Rule;
 import lombok.Getter;
 
 /**
- * 运行态规则
+ * 运行态规则，无法修改rule
  * 
  * @author lhf2018
  * @date 2022/11/13 23:13

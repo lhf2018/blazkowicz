@@ -14,7 +14,7 @@ import lombok.Getter;
 @Entity
 public class Rule {
     /** 规则id */
-    private String ruleId;
+    private Integer ruleId;
     /** 名称 */
     private String ruleName;
     /** 条件 */
@@ -22,7 +22,7 @@ public class Rule {
     /** 条件逻辑 */
     private String logic;
 
-    public Rule(String ruleId, String ruleName, List<Condition> conditionList, String logic) {
+    public Rule(Integer ruleId, String ruleName, List<Condition> conditionList, String logic) {
         this.ruleId = ruleId;
         this.ruleName = ruleName;
         this.conditionList = conditionList;

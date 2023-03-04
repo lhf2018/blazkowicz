@@ -22,15 +22,15 @@ public class ResultDTO<T> implements Serializable {
         return ResultDTO.<T>builder().success(true).code(SUCCESS).data(data).build();
     }
 
-    public static <T> ResultDTO<Void> buildSuccessResult() {
+    public static ResultDTO<Void> buildSuccessResult() {
         return ResultDTO.<Void>builder().success(true).code(SUCCESS).build();
     }
 
-    public static <T> ResultDTO<Void> buildFailResult(Integer code, String msg) {
+    public static ResultDTO<Void> buildFailResult(Integer code, String msg) {
         return ResultDTO.<Void>builder().code(code).success(false).msg(msg).build();
     }
 
-    public static <T> ResultDTO<Void> buildFailResult(Integer code) {
+    public static ResultDTO<Void> buildFailResult(Integer code) {
         return ResultDTO.<Void>builder().code(code).success(false).build();
     }
 }

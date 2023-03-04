@@ -7,11 +7,11 @@ import lombok.Getter;
  * @date 2022/11/19 20:29
  */
 @Getter
-public class RuleScript {
+public class ConditionScript {
     private String content;
-    private RuleScriptType type;
+    private ConditionScriptType type;
 
-    public RuleScript(String content, RuleScriptType type) {
+    public ConditionScript(String content, ConditionScriptType type) {
         this.content = content;
         this.type = type;
     }
