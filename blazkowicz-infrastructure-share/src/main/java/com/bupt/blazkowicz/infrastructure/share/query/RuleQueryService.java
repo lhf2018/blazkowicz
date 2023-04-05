@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import com.bupt.blazkowicz.domain.share.entity.BusinessIdentity;
 import com.bupt.blazkowicz.domain.share.entity.PreventionType;
 import com.bupt.blazkowicz.domain.share.entity.Rule;
-import com.bupt.blazkowicz.infrastructure.share.inf.NosqlInfService;
+import com.bupt.blazkowicz.infrastructure.share.inf.CacheInfService;
 
 /**
  * 规则查询
@@ -19,7 +19,7 @@ import com.bupt.blazkowicz.infrastructure.share.inf.NosqlInfService;
 @Component
 public class RuleQueryService {
     @Autowired
-    private NosqlInfService nosqlInfService;
+    private CacheInfService cacheInfService;
 
     /**
      * 返回策略列表

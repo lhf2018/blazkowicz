@@ -9,7 +9,8 @@ import com.bupt.blazkowicz.domain.share.entity.BusinessIdentity;
 import com.bupt.blazkowicz.domain.share.entity.PreventionType;
 import com.bupt.blazkowicz.domain.share.entity.Rule;
 import com.bupt.blazkowicz.domain.share.repo.RuleRepo;
-import com.bupt.blazkowicz.infrastructure.share.inf.NosqlInfService;
+import com.bupt.blazkowicz.infrastructure.share.dal.mapper.RuleMapper;
+import com.bupt.blazkowicz.infrastructure.share.inf.CacheInfService;
 
 /**
  * @author lhf2018
@@ -18,7 +19,9 @@ import com.bupt.blazkowicz.infrastructure.share.inf.NosqlInfService;
 @Component
 public class RuleRepoImpl implements RuleRepo {
     @Autowired
-    private NosqlInfService nosqlInfService;
+    private CacheInfService cacheInfService;
+    @Autowired
+    private RuleMapper ruleMapper;
 
     @Override
     public List<Rule> get(BusinessIdentity businessIdentity, PreventionType preventionType) {
@@ -27,7 +30,7 @@ public class RuleRepoImpl implements RuleRepo {
     }
 
     @Override
-    public Rule get(String ruleId) {
+    public Rule get(Long ruleId) {
         // todo
         return null;
     }

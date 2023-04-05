@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 import com.bupt.blazkowicz.common.utils.LogicUtil;
 import com.bupt.blazkowicz.domain.share.entity.*;
-import com.bupt.blazkowicz.infrastructure.share.inf.NosqlInfService;
+import com.bupt.blazkowicz.infrastructure.share.inf.CacheInfService;
 import com.bupt.blazkowicz.infrastructure.share.query.RuleQueryService;
 import com.bupt.blazkowicz.running.domain.entity.RunningStrategy;
 import com.bupt.blazkowicz.running.domain.inf.RuleEngineInfService;
@@ -27,7 +27,7 @@ public class RuleEngineInfServiceImpl implements RuleEngineInfService {
     @Autowired
     private RuleQueryService ruleQueryService;
     @Autowired
-    private NosqlInfService nosqlInfService;
+    private CacheInfService cacheInfService;
 
     private static final String DEFAULT_METHOD = "run";
 

@@ -7,5 +7,5 @@ import com.bupt.blazkowicz.domain.share.bridge.enums.SequenceType;
  * @date 2022/12/31 23:05
  */
 public interface SequenceInfService {
-    Integer nextSequenceId(SequenceType sequenceType);
+    Long nextSequenceId(SequenceType sequenceType);
 }

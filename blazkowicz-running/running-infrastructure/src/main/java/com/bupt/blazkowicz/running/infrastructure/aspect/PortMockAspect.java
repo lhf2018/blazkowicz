@@ -43,6 +43,6 @@ public class PortMockAspect {
         List<RequiredValue> requiredValueList = Lists.newArrayList();
         requiredValueList.add(new RequiredValue(RequiredValueType.CONSTANT, "param", "test"));
         Condition condition = new Condition(1, conditionScript, requiredValueList, LeftParamType.ACCOUNT);
-        return RuleFactory.create("测试", Lists.newArrayList(condition), "1&2&3")
+        return RuleFactory.create("测试", Lists.newArrayList(condition), "1&2&3");
     }
 }

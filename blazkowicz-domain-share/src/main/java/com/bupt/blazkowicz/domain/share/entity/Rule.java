@@ -2,7 +2,7 @@ package com.bupt.blazkowicz.domain.share.entity;
 
 import java.util.List;
 
-import com.bupt.blazkowicz.domain.share.anno.ValueObject;
+import com.bupt.blazkowicz.domain.share.anno.Entity;
 
 import lombok.Getter;
 
@@ -13,8 +13,9 @@ import lombok.Getter;
  * @date 2022/11/19 20:20
  */
 @Getter
-@ValueObject
+@Entity
 public class Rule extends BaseRule {
+    private Long ruleId;
     /** 名称 */
     private String ruleName;
     /** 条件 */
@@ -22,10 +23,19 @@ public class Rule extends BaseRule {
     /** 条件逻辑 */
     private String logic;
 
-    public Rule(String ruleName, List<Condition> conditionList, String logic) {
+    public Rule(Long ruleId, String ruleName, List<Condition> conditionList, String logic) {
         super(RuleType.SCRIPT);
+        this.ruleId = ruleId;
         this.ruleName = ruleName;
         this.conditionList = conditionList;
+        this.logic = logic;
+    }
+
+    public void update(List<Condition> conditionList) {
+        this.conditionList = conditionList;
+    }
+
+    public void update(String logic) {
         this.logic = logic;
     }
 }

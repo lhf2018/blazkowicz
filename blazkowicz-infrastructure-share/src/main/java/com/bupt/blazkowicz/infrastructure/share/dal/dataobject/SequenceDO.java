@@ -11,6 +11,6 @@ import lombok.Setter;
 @Setter
 public class SequenceDO {
     private Integer id;
-    private Integer sequenceId;
+    private Long sequenceId;
     private String sequenceType;
 }

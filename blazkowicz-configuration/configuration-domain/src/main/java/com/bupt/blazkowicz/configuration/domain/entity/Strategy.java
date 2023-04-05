@@ -1,19 +1,16 @@
 package com.bupt.blazkowicz.configuration.domain.entity;
 
-import com.bupt.blazkowicz.domain.share.anno.Entity;
 import java.util.Date;
 import java.util.List;
 
 import com.bupt.blazkowicz.configuration.domain.bridge.ConfigurationDomainBridge;
 import com.bupt.blazkowicz.configuration.domain.repo.StrategyRepo;
-import com.bupt.blazkowicz.domain.share.anno.AggRoot;
+import com.bupt.blazkowicz.domain.share.anno.Entity;
 import com.bupt.blazkowicz.domain.share.entity.BusinessIdentity;
 import com.bupt.blazkowicz.domain.share.entity.PreventionType;
 import com.bupt.blazkowicz.domain.share.entity.Rule;
-import lombok.Getter;
 
-import java.util.Date;
-import java.util.List;
+import lombok.Getter;
 
 /**
  * 风险识别的策略
@@ -42,6 +39,7 @@ public class Strategy {
     private String description;
 
     /** 识别规则 */
+    // todo rule是否要用id概念
     private Rule rule;
 
     /** 处置 */

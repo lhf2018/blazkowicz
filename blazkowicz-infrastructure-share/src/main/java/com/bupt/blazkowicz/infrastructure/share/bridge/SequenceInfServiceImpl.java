@@ -18,7 +18,7 @@ public class SequenceInfServiceImpl implements SequenceInfService {
     private SequenceMapper sequenceMapper;
 
     @Override
-    public synchronized Integer nextSequenceId(SequenceType sequenceType) {
+    public synchronized Long nextSequenceId(SequenceType sequenceType) {
         SequenceDO sequenceDO = sequenceMapper.get(sequenceType.name());
         if (sequenceDO != null) {
             sequenceMapper.update(sequenceDO);

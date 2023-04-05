@@ -8,6 +8,7 @@ import lombok.Data;
  */
 @Data
 public class UpdateRuleReq {
-    private String ruleName;
-    private String ruleScript;
+    private Long ruleId;
+    private String ruleConditions;
+    private String ruleLogic;
 }

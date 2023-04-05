@@ -8,7 +8,7 @@ import lombok.Data;
  */
 @Data
 public class CreateRuleReq {
-    private String ruleType;
     private String ruleName;
-    private String ruleContent;
+    private String ruleConditions;
+    private String ruleLogic;
 }

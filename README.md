@@ -23,10 +23,14 @@ http://127.0.0.1:8080/prevention/request?prevention_type=TEST&business_identity=
 * ~~rule中重写，只有脚本，没有参数，但会对外展示需要什么参数~~
 * strategy中的rule修改和公共configuratioservice中的rule修改之间的关系--只有公共能改，策略中不能改
 * strategyMapper
+* ruleMapper
+* ~~rule是否要用id概念~~
+* 搜索rule
+* 搜索策略
 * 接入dubbo
 * 接入nosql
 * 内存缓存
-* 接入缓存
+* ~~接入缓存~~
 * 配置态更新
 * 日志配置
 * RuleRepoImpl
@@ -36,6 +40,14 @@ http://127.0.0.1:8080/prevention/request?prevention_type=TEST&business_identity=
 * rule规则的创建和更新等，看是否收口到Event中
 
 ## 更新记录
+
+#### 2023年4月3
+
+* 接入redis
+* 完善StrategyRepo
+* 完善实现RuleConfigurationServiceImpl
+* 移除ruleManageInfService，上层直接使用ruleRepo
+* rule增加id，变为实体
 
 #### 2023年3月4
 

@@ -17,7 +17,7 @@ public interface RuleConfigurationService {
      * @param createRuleReq
      * @return
      */
-    ResultDTO<Void> createRule(CreateRuleReq createRuleReq);
+    ResultDTO<Void> create(CreateRuleReq createRuleReq);
 
     /**
      * 更新規則
@@ -25,5 +25,5 @@ public interface RuleConfigurationService {
      * @param updateRuleReq
      * @return
      */
-    ResultDTO<Void> updateRule(UpdateRuleReq updateRuleReq);
+    ResultDTO<Void> update(UpdateRuleReq updateRuleReq);
 }

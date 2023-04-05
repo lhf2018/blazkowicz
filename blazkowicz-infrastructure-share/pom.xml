@@ -27,10 +27,6 @@
             <groupId>com.bupt</groupId>
             <artifactId>blazkowicz-domain-share</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-        </dependency>
         <!-- groovy -->
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
@@ -39,6 +35,11 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+        </dependency>
+        <!-- redis -->
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
         </dependency>
     </dependencies>
 

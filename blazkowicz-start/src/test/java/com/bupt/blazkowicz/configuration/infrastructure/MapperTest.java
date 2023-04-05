@@ -48,10 +48,10 @@ public class MapperTest extends ApplicationTest {
 
     @Test
     public void queryAll2() {
-        Integer sequenceId = sequenceInfService.nextSequenceId(SequenceType.RULE_ID);
-        Integer newSequenceId = sequenceInfService.nextSequenceId(SequenceType.RULE_ID);
+        Long sequenceId = sequenceInfService.nextSequenceId(SequenceType.RULE_ID);
+        Long newSequenceId = sequenceInfService.nextSequenceId(SequenceType.RULE_ID);
         System.out.println(newSequenceId);
-        Assert.assertEquals((int)newSequenceId, sequenceId + 1);
+        Assert.assertEquals((long)newSequenceId, sequenceId + 1);
     }
 
 }

@@ -28,7 +28,7 @@ public interface RuleRepo {
      * @param ruleId
      * @return
      */
-    Rule get(String ruleId);
+    Rule get(Long ruleId);
 
     /**
      * 保存策略
