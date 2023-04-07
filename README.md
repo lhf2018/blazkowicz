@@ -32,7 +32,7 @@ http://127.0.0.1:8080/prevention/request?prevention_type=TEST&business_identity=
 * 内存缓存
 * ~~接入缓存~~
 * 配置态更新
-* 日志配置
+* ~~日志配置~~
 * RuleRepoImpl
 * StrategyRepoImpl
 * 修改Strategy内容
