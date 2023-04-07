@@ -8,6 +8,8 @@ import com.bupt.blazkowicz.configuration.domain.repo.StrategyRepo;
 import com.bupt.blazkowicz.configuration.infrastructure.dal.StrategyMapper;
 import com.bupt.blazkowicz.domain.share.entity.BusinessIdentity;
 import com.bupt.blazkowicz.domain.share.entity.PreventionType;
+import com.bupt.blazkowicz.infrastructure.share.dal.mapper.RuleMapper;
+import com.bupt.blazkowicz.infrastructure.share.query.PreventionConfigInfService;
 
 /**
  * @author lhf2018
@@ -17,6 +19,10 @@ import com.bupt.blazkowicz.domain.share.entity.PreventionType;
 public class StrategyRepoImpl implements StrategyRepo {
     @Autowired
     private StrategyMapper strategyMapper;
+    @Autowired
+    private RuleMapper ruleMapper;
+    @Autowired
+    private PreventionConfigInfService preventionConfigInfService;
 
     @Override
     public void save(Strategy strategy) {

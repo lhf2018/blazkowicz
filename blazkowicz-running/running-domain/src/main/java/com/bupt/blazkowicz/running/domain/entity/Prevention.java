@@ -45,8 +45,10 @@ public class Prevention {
 
             IdentityResultResp identityResultResp = new IdentityResultResp();
             identityResultResp.setStatus(status);
+            identityResultResp.setRuleName(rule.getRuleName());
             identityResultRespList.add(identityResultResp);
         });
+        // todo 增加处置的处理
         return identityResultRespList;
     }
 }

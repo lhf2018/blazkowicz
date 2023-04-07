@@ -2,6 +2,7 @@ package com.bupt.blazkowicz.running.domain.entity;
 
 import com.bupt.blazkowicz.domain.share.anno.Entity;
 import com.bupt.blazkowicz.domain.share.entity.Rule;
+import com.bupt.blazkowicz.domain.share.resp.DisposalResp;
 
 import lombok.Getter;
 
@@ -17,7 +18,11 @@ public class RunningStrategy {
     /** 规则 */
     private Rule rule;
 
-    public RunningStrategy(Rule rule) {
+    /** 处置 */
+    private DisposalResp disposalResp;
+
+    public RunningStrategy(Rule rule, DisposalResp disposalResp) {
         this.rule = rule;
+        this.disposalResp = disposalResp;
     }
 }

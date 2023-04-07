@@ -34,12 +34,22 @@ http://127.0.0.1:8080/prevention/request?prevention_type=TEST&business_identity=
 * 配置态更新
 * 日志配置
 * RuleRepoImpl
+* StrategyRepoImpl
+* 修改Strategy内容
 * ruleDO
 * todo扩展除了脚本以外更多类型的规则（黑白名单库等）
 * 规则的外部使用在规则引擎中区分
 * rule规则的创建和更新等，看是否收口到Event中
+* RunningStrategy中如何读取到strategy的内容
+* PreventionConfigInfService
 
 ## 更新记录
+
+#### 2023年4月7
+
+* Strategy聚合根优化
+* 增加PreventionConfigInfService
+* 优化LogicUtil代码
 
 #### 2023年4月3
 

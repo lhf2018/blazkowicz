@@ -27,7 +27,7 @@ public class PortMockAspect {
     @Around("getRuleList()")
     public Object mockGetRuleList(ProceedingJoinPoint pjp) throws Throwable {
         if (MockSwitch.MOCK) {
-            RunningStrategy runningStrategy = new RunningStrategy(getRule());
+            RunningStrategy runningStrategy = new RunningStrategy(getRule(), null);
             return Lists.newArrayList(runningStrategy);
         } else {
             return pjp.proceed();
@@ -42,7 +42,9 @@ public class PortMockAspect {
         ConditionScript conditionScript = new ConditionScript(SCRIPT, ConditionScriptType.GROOVY);
         List<RequiredValue> requiredValueList = Lists.newArrayList();
         requiredValueList.add(new RequiredValue(RequiredValueType.CONSTANT, "param", "test"));
-        Condition condition = new Condition(1, conditionScript, requiredValueList, LeftParamType.ACCOUNT);
-        return RuleFactory.create("测试", Lists.newArrayList(condition), "1&2&3");
+        Condition condition1 = new Condition(1, conditionScript, requiredValueList, LeftParamType.ACCOUNT);
+        Condition condition2 = new Condition(2, conditionScript, requiredValueList, LeftParamType.ACCOUNT);
+        Condition condition3 = new Condition(3, conditionScript, requiredValueList, LeftParamType.ACCOUNT);
+        return RuleFactory.create("测试", Lists.newArrayList(condition1, condition2, condition3), "1&&2&&3");
     }
 }

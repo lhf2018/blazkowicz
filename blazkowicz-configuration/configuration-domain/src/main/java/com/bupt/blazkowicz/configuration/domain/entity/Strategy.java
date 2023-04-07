@@ -8,7 +8,6 @@ import com.bupt.blazkowicz.configuration.domain.repo.StrategyRepo;
 import com.bupt.blazkowicz.domain.share.anno.Entity;
 import com.bupt.blazkowicz.domain.share.entity.BusinessIdentity;
 import com.bupt.blazkowicz.domain.share.entity.PreventionType;
-import com.bupt.blazkowicz.domain.share.entity.Rule;
 
 import lombok.Getter;
 
@@ -39,8 +38,7 @@ public class Strategy {
     private String description;
 
     /** 识别规则 */
-    // todo rule是否要用id概念
-    private Rule rule;
+    private Long introducedRuleId;
 
     /** 处置 */
     private List<Disposal> disposalList;
@@ -58,7 +56,7 @@ public class Strategy {
     }
 
     public Strategy(Long strategyId, Date gmtCreate, Date gmtModified, Integer version,
-        BusinessIdentity businessIdentity, PreventionType preventionType, String name, String description, Rule rule,
+        BusinessIdentity businessIdentity, PreventionType preventionType, String name, String description,
         List<Disposal> disposalList) {
         this.strategyId = strategyId;
         this.gmtCreate = gmtCreate;
@@ -68,7 +66,6 @@ public class Strategy {
         this.preventionType = preventionType;
         this.name = name;
         this.description = description;
-        this.rule = rule;
         this.disposalList = disposalList;
     }
 
@@ -79,6 +76,10 @@ public class Strategy {
         disposalList.add(newDisposal);
 
         save();
+    }
+
+    public void addRule(Long introducedRuleId) {
+        this.introducedRuleId = introducedRuleId;
     }
 
     public void save() {
