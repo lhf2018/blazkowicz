@@ -71,6 +71,7 @@
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>2.1.0</version>
         </dependency>
         <!-- spring end-->
         <dependency>
@@ -105,11 +106,6 @@
             <dependency>
                 <groupId>com.bupt</groupId>
                 <artifactId>blazkowicz-domain-share</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.bupt</groupId>
-                <artifactId>blazkowicz-infrastructure-share</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -211,7 +207,6 @@
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>1.18.24</version>
-                <scope>provided</scope>
             </dependency>
             <!-- external lib end -->
         </dependencies>

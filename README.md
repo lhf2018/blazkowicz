@@ -44,6 +44,8 @@ http://127.0.0.1:8080/prevention/request?prevention_type=TEST&business_identity=
 * PreventionConfigInfService
 
 ## 更新记录
+#### 2023年4月15
+* StrategyMapper
 
 #### 2023年4月7
 
