@@ -3,7 +3,6 @@ package com.bupt.blazkowicz.infrastructure.share.query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.alibaba.fastjson.JSON;
 import com.bupt.blazkowicz.domain.share.dto.DisposalCustomDTO;
 import com.bupt.blazkowicz.domain.share.resp.DisposalResp;
 import com.bupt.blazkowicz.infrastructure.share.dal.mapper.StrategyMapper;
@@ -12,6 +11,8 @@ import com.bupt.blazkowicz.infrastructure.share.inf.CacheKeyUtil;
 import com.bupt.blazkowicz.infrastructure.share.translator.DisposalConfigTranslator;
 
 /**
+ * 公共类，用于更新和查询公共规则信息
+ * 
  * @author lhf2018
  */
 @Component

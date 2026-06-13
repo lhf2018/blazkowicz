@@ -24,22 +24,16 @@ public class Strategy {
     private final Date gmtCreate;
     private Date gmtModified;
     private Integer version;
-
     /** 业务身份 */
-    private BusinessIdentity businessIdentity;
-
+    private final BusinessIdentity businessIdentity;
     /** 防控场景 */
-    private PreventionType preventionType;
-
+    private final PreventionType preventionType;
     /** 策略名称 */
-    private String name;
-
+    private final String name;
     /** 描述 */
     private String description;
-
     /** 识别规则 */
     private Long introducedRuleId;
-
     /** 处置 */
     private List<Disposal> disposalList;
 
@@ -57,7 +51,7 @@ public class Strategy {
 
     public Strategy(Long strategyId, Date gmtCreate, Date gmtModified, Integer version,
         BusinessIdentity businessIdentity, PreventionType preventionType, String name, String description,
-        List<Disposal> disposalList) {
+        Long introducedRuleId, List<Disposal> disposalList) {
         this.strategyId = strategyId;
         this.gmtCreate = gmtCreate;
         this.gmtModified = gmtModified;
@@ -66,6 +60,7 @@ public class Strategy {
         this.preventionType = preventionType;
         this.name = name;
         this.description = description;
+        this.introducedRuleId = introducedRuleId;
         this.disposalList = disposalList;
     }
 

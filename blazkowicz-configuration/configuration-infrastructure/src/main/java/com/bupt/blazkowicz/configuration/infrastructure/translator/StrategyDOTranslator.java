@@ -38,8 +38,7 @@ public final class StrategyDOTranslator {
         Strategy strategy = new Strategy(strategyDO.getStrategyId(), new Date(), new Date(), strategyDO.getVersion(),
             BusinessIdentity.valueOf(strategyDO.getBusinessIdentity()),
             PreventionType.valueOf(strategyDO.getPreventionType()), strategyDO.getName(), strategyDO.getDescription(),
-            Collections.<Disposal>emptyList());
-        strategy.addRule(strategyDO.getIntroducedRuleId());
+            strategyDO.getIntroducedRuleId(), Collections.<Disposal>emptyList());
         return strategy;
     }
 
