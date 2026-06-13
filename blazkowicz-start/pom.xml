@@ -33,6 +33,19 @@
             <artifactId>running-controller</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.bupt</groupId>
+            <artifactId>configuration-application</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.bupt</groupId>
+            <artifactId>configuration-controller</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.bupt</groupId>
+            <artifactId>blazkowicz-infrastructure-share</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-test</artifactId>
         </dependency>

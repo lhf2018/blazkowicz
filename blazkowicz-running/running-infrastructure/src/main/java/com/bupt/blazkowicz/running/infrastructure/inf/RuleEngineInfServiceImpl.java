@@ -67,6 +67,9 @@ public class RuleEngineInfServiceImpl implements RuleEngineInfService {
     public List<RunningStrategy> getRunningStrategyList(String businessIdentity, String preventionType) {
         List<Rule> ruleList = ruleQueryService.getRuleRespList(BusinessIdentity.valueOf(businessIdentity),
             PreventionType.valueOf(preventionType));
+        if (ruleList == null || ruleList.isEmpty()) {
+            return Lists.newArrayList();
+        }
         List<RunningStrategy> runningStrategyList = Lists.newArrayList();
         ruleList.forEach(rule -> {
             DisposalResp disposalResp =

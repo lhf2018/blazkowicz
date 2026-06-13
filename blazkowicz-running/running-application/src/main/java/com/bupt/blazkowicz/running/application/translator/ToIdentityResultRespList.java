@@ -7,7 +7,6 @@ import com.bupt.blazkowicz.running.client.api.resp.IdentityResultResp;
 
 /**
  * @author lhf2018
- * @date 2022/10/30 0:14
  */
 public class ToIdentityResultRespList {
 
@@ -23,6 +22,9 @@ public class ToIdentityResultRespList {
         IdentityResultResp resp = new IdentityResultResp();
         resp.setName(identityResultResp.getRuleName());
         resp.setStatus(identityResultResp.getStatus().name());
+        resp.setDisposalType(identityResultResp.getDisposalType());
+        resp.setDisposalAction(identityResultResp.getDisposalAction());
+        resp.setDisposalMessage(identityResultResp.getDisposalMessage());
         return resp;
     }
 }

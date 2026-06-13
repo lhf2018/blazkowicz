@@ -29,6 +29,7 @@
         <module>blazkowicz-running/running-application</module>
         <module>blazkowicz-configuration/configuration-client</module>
         <module>blazkowicz-configuration/configuration-application</module>
+        <module>blazkowicz-configuration/configuration-controller</module>
         <module>blazkowicz-running/running-controller</module>
         <module>blazkowicz-client-share</module>
         <module>blazkowicz-application-share</module>
@@ -114,11 +115,6 @@
             </dependency>
             <dependency>
                 <groupId>com.bupt</groupId>
-                <artifactId>blazkowicz-infrastructure-share</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.bupt</groupId>
                 <artifactId>running-domain</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -147,9 +143,19 @@
                 <artifactId>running-application</artifactId>
                 <version>${project.version}</version>
             </dependency>
+        <dependency>
+            <groupId>com.bupt</groupId>
+            <artifactId>configuration-client</artifactId>
+            <version>${project.version}</version>
+        </dependency>
             <dependency>
                 <groupId>com.bupt</groupId>
-                <artifactId>configuration-client</artifactId>
+                <artifactId>configuration-application</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.bupt</groupId>
+                <artifactId>configuration-controller</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -159,6 +165,11 @@
             </dependency>
             <!-- self end-->
             <!-- external lib start -->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>1.3.2</version>
+            </dependency>
             <!-- groovy -->
             <dependency>
                 <groupId>org.codehaus.groovy</groupId>

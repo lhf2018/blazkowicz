@@ -2,7 +2,22 @@
 
 一个简易的风控引擎
 
-## 本地测试地址：
+## 控制台
+
+启动后访问：**http://127.0.0.1:8080/**
+
+功能模块：
+
+- **概览** — 规则/策略/运行态统计
+- **规则配置** — 创建与编辑 Groovy 规则
+- **策略配置** — 绑定规则与处置策略
+- **运行态测试** — 实时调用防控接口并查看结果
+
+## 文档
+
+- [本地 Wiki：项目现状与规划](./wiki/项目现状与规划.md)
+
+## API 测试地址
 
 http://127.0.0.1:8080/prevention/request?prevention_type=TEST&business_identity=TEST&user_id=114515
 
@@ -89,8 +104,10 @@ http://127.0.0.1:8080/prevention/request?prevention_type=TEST&business_identity=
 
 ## 建表语句
 
-``
-create table blazkowicz_sequence
-(
-sequence_id int not null, sequence_type varchar(63) not null, id int auto_increment, constraint blazkowicz_sequence_pk primary key (id)
-);``
+见 `blazkowicz-start/src/main/resources/db/schema.sql`，应用启动时会自动建表。
+
+核心表：
+
+- `tb_blazkowicz_rule` — 规则脚本与条件
+- `tb_blazkowicz_strategy` — 策略绑定规则与处置配置
+- `blazkowicz_sequence` — ID 发号

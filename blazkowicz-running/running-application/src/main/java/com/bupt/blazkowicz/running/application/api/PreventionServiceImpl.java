@@ -25,7 +25,6 @@ public class PreventionServiceImpl implements PreventionService {
     public ResultDTO<PreventionResultResp> request(PreventionReq preventionReq) {
         BusinessIdentity businessIdentity = BusinessIdentity.valueOf(preventionReq.getBusinessIdentity());
         PreventionType preventionType = PreventionType.valueOf(preventionReq.getPreventionType());
-        // todo 创建逻辑
         Prevention prevention = new Prevention(businessIdentity, preventionType);
         List<IdentityResultResp> result = prevention.run(preventionReq.getUserId());
 

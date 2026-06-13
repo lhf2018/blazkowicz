@@ -4,9 +4,14 @@ import lombok.Data;
 
 /**
  * @author lhf2018
- * @date 2023/4/7 23:03
  */
 @Data
 public class DisposalCustomDTO {
-    // todo
+    private String businessIdentity;
+    private String preventionType;
+    private Long ruleId;
+    /** AUDIT / PUNISH */
+    private String disposalType;
+    private String action;
+    private String message;
 }

@@ -4,7 +4,6 @@ import lombok.Data;
 
 /**
  * @author lhf2018
- * @date 2023/1/8 0:35
  */
 @Data
 public class RuleDO {
@@ -14,10 +13,10 @@ public class RuleDO {
     private Integer version;
     /** 名称 */
     private String ruleName;
-    /** 脚本 */
-    private String ruleScript;
-    /** 判断条件 */
+    /** 判断条件 JSON */
     private String conditions;
+    /** 条件逻辑 */
+    private String logic;
     /** 左参数类型（外部传入） */
     private String leftParamType;
 }

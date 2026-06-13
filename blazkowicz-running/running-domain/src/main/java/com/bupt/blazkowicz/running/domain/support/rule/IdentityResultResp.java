@@ -6,10 +6,12 @@ import lombok.Data;
 
 /**
  * @author lhf2018
- * @date 2022/10/29 16:38
  */
 @Data
 public class IdentityResultResp {
     private Status status;
     private String ruleName;
+    private String disposalType;
+    private String disposalAction;
+    private String disposalMessage;
 }

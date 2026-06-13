@@ -7,6 +7,7 @@ import com.bupt.blazkowicz.domain.share.entity.BusinessIdentity;
 import com.bupt.blazkowicz.domain.share.entity.PreventionType;
 import com.bupt.blazkowicz.domain.share.entity.Rule;
 import com.bupt.blazkowicz.domain.share.entity.Status;
+import com.bupt.blazkowicz.domain.share.resp.DisposalResp;
 import com.bupt.blazkowicz.running.domain.bridge.RunningDomainBridge;
 import com.bupt.blazkowicz.running.domain.inf.RuleEngineInfService;
 import com.bupt.blazkowicz.running.domain.support.rule.IdentityResultResp;
@@ -17,7 +18,6 @@ import lombok.Getter;
 
 /**
  * @author lhf2018
- * @date 2022/11/13 23:03
  */
 @Getter
 @AggRoot
@@ -46,9 +46,23 @@ public class Prevention {
             IdentityResultResp identityResultResp = new IdentityResultResp();
             identityResultResp.setStatus(status);
             identityResultResp.setRuleName(rule.getRuleName());
+            if (Status.MEET == status) {
+                applyDisposal(identityResultResp, runningStrategy.getDisposalResp());
+            }
             identityResultRespList.add(identityResultResp);
         });
-        // todo 增加处置的处理
         return identityResultRespList;
+    }
+
+    private void applyDisposal(IdentityResultResp identityResultResp, DisposalResp disposalResp) {
+        if (disposalResp == null) {
+            identityResultResp.setDisposalType("AUDIT");
+            identityResultResp.setDisposalAction("MANUAL_REVIEW");
+            identityResultResp.setDisposalMessage("风险命中，需人工审核");
+            return;
+        }
+        identityResultResp.setDisposalType(disposalResp.getDisposalType());
+        identityResultResp.setDisposalAction(disposalResp.getAction());
+        identityResultResp.setDisposalMessage(disposalResp.getMessage());
     }
 }
