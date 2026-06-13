@@ -1,5 +1,13 @@
 # IDE
-.idea/
+.idea/*
+!.idea/runConfigurations/
+!.idea/runConfigurations/**
+!.idea/misc.xml
+!.idea/compiler.xml
+!.idea/encodings.xml
+!.idea/jarRepositories.xml
+!.idea/vcs.xml
+!.idea/runConfigurations.xml
 .vscode/
 *.iml
 *.ipr

@@ -21,10 +21,13 @@ import com.bupt.blazkowicz.domain.share.entity.RequiredValueType;
 import com.bupt.blazkowicz.domain.share.entity.Rule;
 import com.bupt.blazkowicz.domain.share.factory.RuleFactory;
 import com.bupt.blazkowicz.domain.share.repo.RuleRepo;
+import com.bupt.blazkowicz.infrastructure.share.dal.dataobject.RuleDO;
 import com.bupt.blazkowicz.infrastructure.share.dal.dataobject.StrategyDO;
+import com.bupt.blazkowicz.infrastructure.share.dal.mapper.RuleMapper;
 import com.bupt.blazkowicz.infrastructure.share.dal.mapper.StrategyMapper;
 import com.bupt.blazkowicz.infrastructure.share.query.PreventionConfigInfService;
 import com.bupt.blazkowicz.infrastructure.share.translator.DisposalConfigTranslator;
+import com.bupt.blazkowicz.infrastructure.share.translator.RuleDOTranslator;
 import com.google.common.collect.Lists;
 
 /**
@@ -39,8 +42,12 @@ public class PipelineDataInitializer implements CommandLineRunner {
         + "        if (userId == \"114515\") {\n" + "            return param == \"test\"\n" + "        } else {\n"
         + "            return false;\n" + "        }\n" + "    }\n" + "}";
 
+    private static final String TEST_RULE_NAME = "测试";
+
     @Autowired
     private RuleRepo ruleRepo;
+    @Autowired
+    private RuleMapper ruleMapper;
     @Autowired
     private StrategyMapper strategyMapper;
     @Autowired
@@ -50,13 +57,13 @@ public class PipelineDataInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        List<Rule> existingRules = ruleRepo.get(BusinessIdentity.TEST, PreventionType.TEST);
-        if (existingRules != null && !existingRules.isEmpty()) {
+        StrategyDO existingStrategy = strategyMapper.get(BusinessIdentity.TEST.name(), PreventionType.TEST.name(),
+            DEFAULT_STRATEGY_NAME);
+        if (existingStrategy != null) {
             return;
         }
 
-        Rule rule = createTestRule();
-        ruleRepo.save(rule);
+        Rule rule = ensureTestRule();
 
         StrategyDO strategyDO = new StrategyDO();
         strategyDO.setStrategyId(sequenceInfService.nextSequenceId(SequenceType.STRATEGY_ID));
@@ -79,6 +86,16 @@ public class PipelineDataInitializer implements CommandLineRunner {
         preventionConfigInfService.publishDisposalResp(disposalCustomDTO);
     }
 
+    private Rule ensureTestRule() {
+        RuleDO existingRule = ruleMapper.getByName(TEST_RULE_NAME);
+        if (existingRule != null) {
+            return RuleDOTranslator.toDomain(existingRule);
+        }
+        Rule rule = createTestRule();
+        ruleRepo.save(rule);
+        return rule;
+    }
+
     private Rule createTestRule() {
         ConditionScript conditionScript = new ConditionScript(SCRIPT, ConditionScriptType.GROOVY);
         List<RequiredValue> requiredValueList =
@@ -86,6 +103,6 @@ public class PipelineDataInitializer implements CommandLineRunner {
         Condition condition1 = new Condition(1, conditionScript, requiredValueList, LeftParamType.ACCOUNT);
         Condition condition2 = new Condition(2, conditionScript, requiredValueList, LeftParamType.ACCOUNT);
         Condition condition3 = new Condition(3, conditionScript, requiredValueList, LeftParamType.ACCOUNT);
-        return RuleFactory.create("测试", Lists.newArrayList(condition1, condition2, condition3), "1&&2&&3");
+        return RuleFactory.create(TEST_RULE_NAME, Lists.newArrayList(condition1, condition2, condition3), "1&&2&&3");
     }
 }
