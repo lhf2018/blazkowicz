@@ -1,4 +1,30 @@
-/.idea/
-/blazkowicz-start/target/
+# IDE
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# Cursor / Codemap 本地配置
+.codemap/
+.cursor/
+
+# Maven
+**/target/
+
+# Logs
 /logs/
-/blazkowicz-start/logs/
+**/logs/
+*.log
+
+# 本地环境配置（含数据库、Redis 等敏感信息）
+**/application-local.properties
+**/application-local.yml
+**/application-local.yaml
+.env
+.env.*
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db
